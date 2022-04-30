@@ -1,0 +1,21 @@
+/*==============================
+=>  Auth
+================================*/
+
+.auth__tagline {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--color-main);
+  font-weight: 500;
+  font-size: 1.8rem;
+}
+
+.auth .layout__boxHeader {
+  text-align: center;
+  justify-content: center;
+}
+
+.auth__action {
+  margin-top: 3rem;
+  text-align: center;
+}
