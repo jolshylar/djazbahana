@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="auth layout">
+  {% if page == 'login' %}
+  <div class="container">
+    <div class="layout__box">
+      <div class="layout__boxHeader">
+        <div class="layout__boxTitle">
+          <h3>Login</h3>
+        </div>
+      </div>
+      <div class="layout__body">
+        <h2 class="auth__tagline">Find your study partner</h2>
+
+        <form class="form" action="" method="post">
+          {% csrf_token %}
+          <div class="form__group form__group">
+            <label for="classroom_name">Email</label>
+            <input id="username" name="email" type="text" placeholder="e.g. kriper1997@email.com" />
+          </div>
+          <div class="form__group">
+            <label for="password">Password</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="hope you use a powerful password"
+            />
+          </div>
+
+          <button class="btn btn--main" type="submit">
+            <img src="{% static 'images/icons/lock.svg' %}" />
+            Login
+          </button>
+        </form>
+
+        <div class="auth__action">
+          <p>Haven't signed up yet?</p>
+          <a href="{% url 'register' %}" class="btn btn--link">Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <div class="container">
+    <div class="layout__box">
+      <div class="layout__boxHeader">
+        <div class="layout__boxTitle">
+          <h3>Register</h3>
+        </div>
+      </div>
+      <div class="layout__body">
+        <h2 class="auth__tagline">Find your study partner</h2>
+
+        <form class="form" action="" method="post">
+          {% csrf_token %}
+
+          {% for field in form %}
+          <div class="form__group form__group">
+            <label for="classroom_name">{{field.label}}</label>
+            {{field}}
+          </div>
+          {% endfor %}
+
+          <button class="btn btn--main" type="submit">
+            <img src="{% static 'images/icons/lock.svg' %}" />
+            Register
+          </button>
+        </form>
+
+        <div class="auth__action">
+          <p>Already signed up?</p>
+          <a href="{% url 'login' %}" class="btn btn--link">Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</main>
+{% endblock content %}

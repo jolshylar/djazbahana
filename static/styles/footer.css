@@ -1,0 +1,27 @@
+.footer {
+  position: fixed;
+  top: 84%;
+  width: 100%;
+  background-color: var(--color-dark);
+  z-index: 999;
+}
+
+.footer a {
+  color: var(--color-light-gray);
+}
+
+.footer-content {
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer-license {
+  padding: 15px 0;
+  text-align: center;
+  border-top: 1px solid;
+}

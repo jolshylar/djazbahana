@@ -1,0 +1,63 @@
+/*==============================
+=>  Profile
+================================*/
+
+.profile {
+  margin-bottom: 3rem;
+}
+
+.profile__avatar {
+  text-align: center;
+}
+
+.profile__info {
+  text-align: center;
+}
+
+.profile__info h3 {
+  font-size: 2rem;
+  color: var(--color-light);
+  font-weight: 400;
+}
+
+.profile__info p {
+  color: var(--color-main);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.profile__about {
+  margin-top: 2rem;
+}
+
+.profile__about h3 {
+  text-transform: uppercase;
+  color: var(--color-dark-light);
+  margin-bottom: 0.5rem;
+}
+
+/* ===== Balance ===== */
+
+.header__jpcoin {
+  height: 36px;
+  width: 36px;
+}
+
+.jpcoin_balance {
+  padding-top: 6px;
+}
+
+.donat {
+  font-size: 23px;
+  line-height: 1.5em;
+  text-align: center;
+}
+
+h3 {
+  padding-top: 10px;
+}
+
+.layout__body__balance {
+  display: flex;
+  flex-direction: row;
+}

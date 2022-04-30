@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="auth layout">
+  <div class="container">
+    <div class="layout__box">
+      <div class="layout__boxHeader">
+        <div class="layout__boxTitle">
+          <a href="{% url 'classroom' classroom.id %}">
+            <img src="{% static 'images/icons/arrow-left.svg' %}" />
+          </a>
+          <h3>Message Constructor</h3>
+        </div>
+      </div>
+      <div class="layout__body">
+        <h2 class="auth__tagline">Result will be posted on the current room</h2>
+        <form class="form" action="" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+
+          {% for field in form %}
+          <div class="form__group">
+              <label for="profile_pic">{{field.label}}</label>
+              {{field}}
+          </div>
+          {% endfor %}
+
+          <div class="form__action">
+            <button class="btn btn--main" type="submit">Send</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock content %}

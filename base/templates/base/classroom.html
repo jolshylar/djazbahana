@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% load base_extras %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles/classroom.css' %}">
+<main class="profile-page layout layout--2">
+  <div class="container">
+    <div class="classroom">
+      <div class="classroom__top">
+        <div class="classroom__topLeft">
+          <a href="{% url 'home' %}">
+            <img src="{% static 'images/icons/arrow-left.svg' %}" />
+          </a>
+          <h3>Classroom</h3>
+        </div>
+
+        {% if classroom.host == request.user %}
+        <div class="classroom__topRight">
+          <a href="{% url 'update-classroom' classroom.id %}">
+            <img src="{% static 'images/icons/edit.svg' %}" />
+          </a>
+          <a href="{% url 'delete-classroom' classroom.id %}">
+            <img src="{% static 'images/icons/remove.svg' %}" />
+          </a>
+        </div>
+        {% endif %}
+      </div>
+
+      <div class="classroom__box scroll">
+        <div class="classroom__header scroll">
+          <div class="classroom__info">
+            <h3>{{classroom.name}}</h3>
+            <span>{{classroom.created | timesince}} ago</span>
+          </div>
+          <div class="classroom__hosted">
+            <p>Hosted By</p>
+            <a href="{% url 'user-profile' classroom.host.id %}" class="classroom__author">
+              <div class="avatar avatar--small">
+                <img src="{{classroom.host.avatar.url}}" />
+              </div>
+              <span>@{{classroom.host.username}}</span>
+            </a>
+          </div>
+          <div class="classroom__details">
+            {{classroom.description}}
+          </div>
+          <span class="classroom__topics">{{classroom.topic}}</span>
+        </div>
+        <div class="classroom__conversation">
+          <div class="threads scroll">
+            {% for message in classroom_messages %}
+            <div class="thread">
+              <div class="thread__top">
+                <div class="thread__author">
+                  <a href="{% url 'user-profile' message.author.id %}" class="thread__authorInfo">
+                    <div class="avatar avatar--small">
+                      <img src="{{message.author.avatar.url}}" />
+                    </div>
+                    <span>@{{message.author.username}}</span>
+                  </a>
+                  <span class="thread__date">{{message.created | timesince}} ago</span>
+                </div>
+                {% if message.author == request.user %}
+                <a href="{% url 'delete-message' message.id %}">
+                  <div class="thread__delete">
+                    <img src="{% static 'images/icons/remove.svg' %}" />
+                  </div>
+                </a>
+                {% endif %}
+              </div>
+              <div class="thread__details">
+                {{ message.body | convert_markdown | safe }}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="classroom__message">
+        <form action="" method="post">
+          {% csrf_token %}
+          <input name="body" placeholder="Write your message..." />
+          <!-- <a href="{% url 'classroom' classroom.id %}">
+            <button class="send__button" type="submit">Send</button>
+          </a> -->
+        </form>
+      </div>
+    </div>
+
+    <div class="upload__students">
+    <div class="students">
+      <h3 class="students__top">Students <span>({{students.count}} Joined)</span></h3>
+      <div class="students__list scroll">
+        {% for user in students %}
+        <a href="{% url 'user-profile' user.id %}" class="student">
+          <div class="avatar avatar--medium">
+            <img src="{{user.avatar.url}}" />
+          </div>
+          <p>
+            {{user.name}}
+            <span>@{{user.username}}</span>
+          </p>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="conspects">
+      <h3 class="students__top">Conspects <span>({{classroom_conspects.count}} Sent)</span></h3>
+      <div class="conspect__box scroll">
+        <div class="conspect__conversation">
+          <div class="threads scroll">
+            {% for conspect in classroom_conspects %}
+            <div class="thread">
+              <div class="thread__top">
+                <div class="thread__author">
+                  <a
+                    href="{% url 'user-profile' conspect.author.id %}"
+                    class="thread__authorInfo"
+                  >
+                    <div class="avatar avatar--small">
+                      <img src="{{conspect.author.avatar.url}}" />
+                    </div>
+                    <span>@{{conspect.author.username}}</span>
+                  </a>
+                  <span class="thread__date"
+                    >{{conspect.created | timesince}} ago</span
+                  >
+                </div>
+              </div>
+              <div class="thread__details">
+                <a href="{% url 'download' 'kriper2017.png' %}">
+                  {{ conspect }}
+                </a>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>      
+
+      <div class="conspect__upload">
+        <a href="{% url 'create-conspect' classroom.id %}">
+          <button class="btn btn--main" type="submit">Upload </button>
+        </a>
+      </div>
+    </div>
+  </div>
+  </div>
+</main>
+{% endblock content %}

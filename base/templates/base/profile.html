@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles/profile.css' %}" />
+<main class="profile-page layout layout--3">
+  <div class="container">
+    {% include 'components/topics_component.html' %}
+
+    <div class="classroomList">
+      <div class="profile">
+        <div class="profile__avatar">
+          <div class="avatar avatar--large active">
+            <img src="{{user.avatar.url}}" />
+            
+          </div>
+        </div>
+        <div class="profile__info">
+          <h3>{{user.name}}</h3>
+          <p>@{{user.username}}</p>
+          {% if request.user == user %}
+          <a href="{% url 'update-user' %}" class="btn btn--main btn--pill">Edit Profile</a>
+          {% endif %}
+        </div>
+        <div class="profile__about">
+          <h3>About</h3>
+          <p>
+            {{user.bio}}
+          </p>
+
+          <hr />
+
+          <h3>Balance</h3>
+            <div class="layout__body__balance">
+              <h1 class="jpcoin_balance">Current balance: 0.00</h1>
+              <img class="header__jpcoin" src="https://media.discordapp.net/attachments/969611827568865282/969621353852440696/JP__2_-removebg-preview.png"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="classroomList__header">
+        <div>
+          <h2>Classrooms Hosted by @{{user.username}}</a>
+          </h2>
+        </div>
+      </div>
+      {% include 'components/feed_component.html' %}
+    </div>
+
+    {% include 'components/activity_component.html' %}
+  </div>
+</main>
+{% endblock content %}

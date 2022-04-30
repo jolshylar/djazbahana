@@ -1,0 +1,11 @@
+/* ===== Donate Page ===== */
+
+.donate-page {
+  font-size: 2rem;
+  margin: 20px 160px;
+}
+
+.donate-page h1 {
+  font-size: 3rem;
+  /* text-align: center; */
+}

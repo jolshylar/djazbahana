@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="create-classroom layout">
+  <div class="container">
+    <div class="layout__box">
+      <div class="layout__boxHeader">
+        <div class="layout__boxTitle">
+          <a href="{% url 'home' %}">
+            <img src="{% static 'images/icons/arrow-left.svg' %}" />
+          </a>
+          <h3>Create/Update Classroom</h3>
+        </div>
+      </div>
+      <div class="layout__body">
+        <form class="form" action="" method="post">
+          {% csrf_token %}
+
+          <div class="form__group">
+            <label for="classroom_topic">Enter a Topic</label>
+            <input required type="text" value="{{classroom.topic.name}}" name="topic" list="topic-list" />
+            <datalist id="topic-list">
+              <select id="classroom_topic">
+                {% for topic in topics %}
+                <option value="{{topic.name}}">{{topic.name}}</option>
+                {% endfor %}
+              </select>
+            </datalist>
+          </div>
+
+          <div class="form__group">
+            <label for="classroom_name">Classroom Name</label>
+            {{form.name}}
+          </div>
+
+          <div class="form__group">
+            <label for="classroom_description">Classroom Description</label>
+            {{form.description}}
+          </div>
+
+          <div class="form__action">
+            <a class="btn btn--dark" href="{% url 'home' %}">Cancel</a>
+            <button class="btn btn--main" type="submit">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock content %}

@@ -1,0 +1,67 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'styles/navbar.css' %}" />
+<header class="header header--loggedIn">
+    <div class="container">
+      <a href="{% url 'home' %}" class="header__logo">
+        <img src="{% static 'images/logo.png' %}" />
+      </a>
+      <form class="header__search" action="{% url 'home' %}">
+        <label>
+          <img src="{% static 'images/icons/search.svg' %}">
+          <input name="q" placeholder="Search Conspects..." />
+        </label>
+      </form>
+
+      <nav class="header__menu">
+       
+        <div class="nav-bar">
+          <ul class="pages">
+            <li>
+              <a href="{% url 'home'%}">Home</a>
+            </li>
+            <li>
+              <a href="{% url 'about' %}">About</a>
+            </li>
+            <li>
+              <a href="{% url 'donate' %}">Donate</a>
+            </li>
+          </ul>
+
+        <!-- Logged In -->
+        {% if request.user.is_authenticated %}
+        <div class="header__user">
+          <a href="{% url 'user-profile' user.id %}">
+            <div class="avatar avatar--medium active">
+              <img src="{{request.user.avatar.url}}" />
+            </div>
+            <p>{{request.user.name}} <span>@{{request.user.username}}</span></p>
+          </a>
+          <button class="dropdown-button">
+            <img src="{% static 'images/icons/chevron-down.svg' %}" />
+          </button>
+        </div>
+        {% else %}
+
+        <!-- Not Logged In -->
+        <a href="{% url 'login' %}">
+          <img src="{% static 'images/avatar.svg' %}" />
+          <p class="login-word">Login</p>
+        </a>
+        {% endif %}
+
+        <div class="dropdown-menu">
+          <a href="{% url 'update-user' %}" class="dropdown-link"
+            ><img src="{% static 'images/icons/tools.svg' %}" />
+            <p>Settings</p>
+          </a>
+         
+          <a href="{% url 'logout' %}" class="dropdown-link"
+            ><img src="{% static 'images/icons/sign-out.svg' %}" />
+            <p>Logout</p>
+          </a> 
+        </div>
+      </div>
+      </nav>
+    </div>
+</header>

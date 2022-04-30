@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles/balance.css' %}" />
+<main>
+    <div class="container">
+        <div class="layout__box__balance">
+            <div class="layout__boxHeader__balance">
+                <div class="layout__boxTitle__balance">
+                    <a href="{% url 'home' %}">
+                    <img src="{%static 'images/icons/arrow-left.svg'%}">
+                    </a>
+                    <h3>Check your login here</h3>                 
+                </div>
+            </div>
+
+            <div class="layout__body__balance">
+                <h1 class="jpcoin_balance">Current balance: 0.00</h1>
+                <img class="header__jpcoin" src="https://media.discordapp.net/attachments/969611827568865282/969621353852440696/JP__2_-removebg-preview.png"/>
+            </div>
+            <a class="donat" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Donat</a>
+        </div>
+    </div>
+</main>
+{% endblock content %}

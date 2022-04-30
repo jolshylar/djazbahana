@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="layout layout--3">
+  <div class="container">
+    {% include 'components/topics_component.html' %}
+
+    <div class="classroomList">
+      <div class="mobile-menu">
+        <form class="header__search" action="{% url 'home' %}">
+          <label>
+            <img src="{% static 'images/icons/search.svg' %}" />
+            <input name="q" placeholder="Search for classrooms" />
+          </label>
+        </form>
+        <div class="mobile-menuItems">
+          <a class="btn btn--main btn--pill" href="{% url 'topics' %}"
+            >Browse Topics</a
+          >
+          <a class="btn btn--main btn--pill" href="{% url 'activity' %}"
+            >Recent Activities</a
+          >
+        </div>
+      </div>
+
+      <div class="classroomList__header">
+        <div>
+          <h2>Classroom</h2>
+          <p>{{classroom_count}} Rooms available</p>
+        </div>
+        <a class="btn btn--main" href="{% url 'create-classroom' %}">
+          <img src="{% static 'images/icons/add.svg' %}" />
+          Create Classroom
+        </a>
+      </div>
+      <div class="classroomListRooms">
+      {% include 'components/feed_component.html' %}
+    </div>
+    </div>
+
+    {% include 'components/activity_component.html' %}
+  </div>
+</main>
+{% endblock content %}

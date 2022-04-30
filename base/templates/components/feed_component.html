@@ -1,0 +1,28 @@
+{% load static %}
+
+{% for classroom in classrooms %}
+<div class="classroomListRoom">
+    <div class="classroomListRoom__header">
+      <a href="{% url 'user-profile' classroom.host.id %}" class="classroomListRoom__author">
+        <div class="avatar avatar--small">
+          <img src="{{classroom.host.avatar.url}}" />
+        </div>
+        <span>@{{classroom.host.username}}</span>
+      </a>
+      <div class="classroomListRoom__actions">
+        <span>{{classroom.created | timesince}} ago</span>
+      </div>
+    </div>
+    <div class="classroomListRoom__content">
+      <a href="{% url 'classroom' classroom.id %}">{{classroom.name}}</a>
+      <p class="description">{{classroom.description}}</p>
+    </div>
+    <div class="classroomListRoom__meta">
+      <a href="{% url 'classroom' classroom.id %}" class="classroomListRoom__joined">
+        <img src="{% static 'images/icons/user-group.svg' %}" />
+        {{classroom.students.all.count}} Joined
+      </a>
+      <p class="classroomListRoom__topic">{{classroom.topic.name}}</p>
+    </div>
+  </div>
+{% endfor %}

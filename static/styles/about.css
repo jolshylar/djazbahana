@@ -1,0 +1,11 @@
+/* ===== About Page ===== */
+
+.about-page {
+  font-size: 2rem;
+  margin: 20px 160px;
+}
+
+.about-page h1 {
+  font-size: 2rem;
+  /* text-align: center; */
+}

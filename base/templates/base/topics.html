@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles/topics.css' %}" />
+<main class="create-classroom layout">
+  <div class="container">
+    <div class="layout__box">
+      <div class="layout__boxHeader">
+        <div class="layout__boxTitle">
+          <a href="{% url 'home' %}">
+            <img src="{% static 'images/icons/arrow-left.svg' %}" />
+          </a>
+          <h3>Browse Topics</h3>
+        </div>
+      </div>
+
+      <div class="topics-page layout__body">
+        <form action="" class="header__search">
+          <label>
+            <img src="{% static 'images/icons/search.svg' %}" />
+            <input name="q" placeholder="Search for topics" />
+          </label>
+        </form>
+
+        <ul class="topics__list">
+          <li>
+            <a href="{% url 'topics' %}" class="active">All <span>{{topics.count}}</span></a>
+          </li>
+          {% for topic in topics %}
+          <li>
+            <a href="{% url 'home' %}?q={{topic.name}}">{{topic.name}}<span>{{topic.classroom_set.all.count}}</span></a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock content %}
