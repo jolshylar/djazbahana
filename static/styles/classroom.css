@@ -75,7 +75,7 @@
   max-height: 30vh;
   overflow-y: auto;
   /* position: absolute; */
-  width: 95%;
+  width: 100%;
   background: var(--color-dark);
   z-index: 999;
   top: 4.4rem;
@@ -115,6 +115,11 @@
 .classroom__info {
   display: flex;
   justify-content: space-between;
+}
+
+.classroom__info span {
+  margin-right: 1rem;
+  padding-top: 1rem;
 }
 
 .classroom__info h3 {
@@ -377,8 +382,8 @@ form .send__button {
   left: 0;
   right: 0;
   background: transparent;
-  display: flex;
-  justify-content: space-between;
+  /* display: flex;
+  justify-content: space-between; */
   gap: 0;
 }
 
@@ -405,14 +410,14 @@ form .send__button {
   height: 40px;
 }
 
-.conspect__upload .send__button {
+/* .conspect__upload .send__button {
   width: 10%;
   border: none;
   align-items: center;
   cursor: pointer;
   border-radius: 5px;
   font-weight: 500;
-}
+} */
 
 .conspect__upload > form > input::placeholder {
   color: var(--color-light-gray);
@@ -433,5 +438,6 @@ form .send__button {
 }
 
 .conspect__upload .btn--main {
-  margin-left: 130%;
+  margin-left: 30%;
+  display: block;
 }
