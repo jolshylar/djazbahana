@@ -10,12 +10,6 @@ from .forms import ConspectForm, CustomUserCreationForm, UserForm, ClassroomForm
 from .models import Classroom, Conspect, User, Message, Topic
 
 
-def download_file(request, filename):
-    fl_path = settings.MEDIA_ROOT / f'uploads/{filename}'
-    print(fl_path)
-    return FileResponse(open(fl_path, 'rb'))
-
-
 def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
 

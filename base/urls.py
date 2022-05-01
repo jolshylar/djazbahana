@@ -3,10 +3,6 @@ from django.shortcuts import render
 
 from . import views
 
-def balance(request):
-    context = {}
-    return render(request, 'base/balance.html', context)
-
 urlpatterns = [
     # Authentication
     path('register/', views.register_page, name='register'),
@@ -24,8 +20,6 @@ urlpatterns = [
     path('delete-classroom/<str:pk>/', views.delete_classroom, name='delete-classroom'),
     path('delete-message/<str:pk>/', views.delete_message, name='delete-message'),
     path('update-user/', views.update_user, name='update-user'),
-    # Download
-    path('download/<str:filename>/', views.download_file, name='download'),
     # Conspects
     path('create-conspect/<str:pk>/', views.create_conspect, name='create-conspect'),
     path('delete-conspect/<str:pk>/', views.delete_conspect, name='delete-conspect'),
