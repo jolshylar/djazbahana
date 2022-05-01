@@ -59,4 +59,4 @@ class Conspect(models.Model):
         ordering = ['-created']
 
     def __str__(self):
-        return self.file.name
+        return f'images/{self.file.name}'
