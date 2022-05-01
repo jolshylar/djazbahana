@@ -1,1 +1,6 @@
+# Folders
 __pycache__/
+uploads/
+
+# Database
+db.sqlite3
