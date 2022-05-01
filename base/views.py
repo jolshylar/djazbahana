@@ -208,7 +208,7 @@ def delete_classroom(request, pk):
     classroom = Classroom.objects.get(id=pk)
 
     if request.user != classroom.host:
-        return HttpResponse('You are not allowed here!')
+        return FileResponse(open(settings.MEDIA_ROOT / 'errors/403.jpg', 'rb'))
 
     if request.method == 'POST':
         classroom.delete()
@@ -223,7 +223,7 @@ def delete_conspect(request, pk):
     conspect = Conspect.objects.get(id=pk)
 
     if request.user != conspect.author:
-        return HttpResponse('You are not allowed here!')
+        return FileResponse(open(settings.MEDIA_ROOT / 'errors/403.jpg', 'rb'))
 
     if request.method == 'POST':
         conspect.delete()
@@ -238,7 +238,7 @@ def delete_message(request, pk):
     message = Message.objects.get(id=pk)
 
     if request.user != message.author:
-        return HttpResponse('You are not allowed here!')
+        return FileResponse(open(settings.MEDIA_ROOT / 'errors/403.jpg', 'rb'))
 
     if request.method == 'POST':
         message.delete()
