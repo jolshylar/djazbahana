@@ -351,11 +351,6 @@ Media
     width: 100%
   }
 
-  .layout. .container, 
-  .header .container {
-    display: block;
-  }
-
   .layout--3 {
     width: 100%;
     display: block;
