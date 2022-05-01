@@ -39,7 +39,6 @@ class Message(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
     body = models.TextField()
-    conspect = models.ImageField(null=True, upload_to="uploads/")
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 

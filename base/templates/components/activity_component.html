@@ -6,36 +6,29 @@
       <h2>Recent Activities</h2>
     </div>
 
-    {% for message in classroom_messages %}
-    <div class="activities__box">
-      <div class="activities__boxHeader roomListRoom__header">
-        <a href="{% url 'user-profile' message.author.id %}" class="classroomListRoom__author">
-          <div class="avatar avatar--small">
-            <img src="{{message.author.avatar.url}}" />
-          </div>
-          <p>
-            @{{message.author.username}}
-            <span>{{message.created | timesince}} ago</span>
-          </p>
-        </a>
-
-        <!-- {% if request.user == message.author %}
-        <div class="classroomListRoom__actions">
-          <a href="{% url 'delete-message' message.id %}">
-            <img src="{% static 'images/icons/remove.svg' %}" />
+    <div class="activity__body">
+      {% for message in classroom_messages %}
+      <div class="activities__box">
+        <div class="activities__boxHeader roomListRoom__header">
+          <a href="{% url 'user-profile' message.author.id %}" class="classroomListRoom__author">
+            <div class="avatar avatar--small">
+              <img src="{{message.author.avatar.url}}" />
+            </div>
+            <p>
+              @{{message.author.username}}
+              <span>{{message.created | timesince}} ago</span>
+            </p>
           </a>
         </div>
-        {% endif %} -->
-
-      </div>
-      <div class="activities__boxContent">
-        <p>replied to post “<a href="{% url 'classroom' message.classroom.id %}">{{message.classroom}}</a>”</p>
-        <div class="activities__boxRoomContent">
-          {{message}}
+        <div class="activities__boxContent">
+          <p>replied to post “<a href="{% url 'classroom' message.classroom.id %}">{{message.classroom}}</a>”</p>
+          <div class="activities__boxRoomContent">
+            {{message}}
+          </div>
         </div>
       </div>
+      {% endfor %}
     </div>
-    {% endfor %}
 
     <a class="btn btn--link" href="{% url 'activity' %}">
       More

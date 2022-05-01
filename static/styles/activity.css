@@ -5,17 +5,18 @@
 .activities {
   background: var(--color-dark);
   border-radius: 5px;
-  overflow: hidden;
 }
 
 .activities__header h2 {
   background-color: var(--color-dark-light);
   text-transform: uppercase;
   font-weight: 500;
-  padding: 1rem 1.5rem;
+  padding: 1.5rem;
   color: var(--color-light);
   letter-spacing: 1px;
   font-size: 1.4rem;
+  border-radius: 5px 5px 0 0;
+  height: 52px;
 }
 
 .activities__box {
@@ -23,6 +24,11 @@
   padding: 1.5rem;
   border: 2px solid var(--color-dark-medium);
   border-radius: 5px;
+}
+
+.activity__body {
+  height: 40vh;
+  overflow: auto;
 }
 
 .activities__boxHeader p {

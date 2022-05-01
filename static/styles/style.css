@@ -204,9 +204,6 @@ Components
 .header {
   padding: 1.5rem;
   background-color: var(--color-dark);
-  position: fixed;
-  top: 0;
-  width: 100%
 }
 
 .login-word {
@@ -343,13 +340,30 @@ Media
   }
 }
 
-@media screen and (max-width: 500px) {
-  .header__search {
+@media screen and (max-width: 480px) {
+  .header__search, 
+  .pages a, 
+  .header__user {
     display: none;
   }
+ 
+  .footer {
+    width: 100%
+  }
+
+  .layour. .container, 
+  .header .container {
+    display: block;
+  }
+
+  .layout--3 {
+    width: 100%;
+    display: block;
+  }
+
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 480px) {
   .mobile-menu {
     display: none;
   }
@@ -376,7 +390,7 @@ Media
 }
 
 .layout--3 > .container > div:nth-child(2) {
-  flex-basis: 100%;
+  flex-basis: 50%;
 }
 
 .layout--3 > .container > div:last-child {
@@ -434,10 +448,6 @@ Media
 
 .layout__body {
   margin: 3rem;
-}
-
-.layout--3 > .container > div:nth-child(2) {
-  flex-basis: 100%;
 }
 
 @media screen and (max-width: 900px) {

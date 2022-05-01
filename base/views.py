@@ -26,7 +26,7 @@ def home(request):
     )
     topics = Topic.objects.all()[0:5]
     classroom_count = classrooms.count()
-    classroom_messages = Message.objects.filter(Q(classroom__topic__name__icontains=q))[0:2]
+    classroom_messages = Message.objects.filter(Q(classroom__topic__name__icontains=q))[0:5]
 
     context = {
         'classrooms': classrooms,
