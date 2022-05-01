@@ -219,6 +219,21 @@ def delete_classroom(request, pk):
 
 
 @login_required(login_url='login')
+def delete_conspect(request, pk):
+    conspect = Conspect.objects.get(id=pk)
+
+    if request.user != conspect.author:
+        return HttpResponse('You are not allowed here!')
+
+    if request.method == 'POST':
+        conspect.delete()
+        return redirect('classroom', conspect.classroom.id)
+
+    context = {'obj': conspect}
+    return render(request, 'base/delete.html', context)
+
+
+@login_required(login_url='login')
 def delete_message(request, pk):
     message = Message.objects.get(id=pk)
 

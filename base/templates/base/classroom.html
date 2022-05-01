@@ -136,6 +136,13 @@
                     <span class="thread__date"
                       >{{conspect.created | timesince}} ago</span
                     >
+                    {% if user == conspect.author %}
+                    <div class="classroomListRoom__actions">
+                      <a href="{% url 'delete-conspect' conspect.id %}">
+                        <img src="{% static 'images/icons/remove.svg' %}" />
+                      </a>
+                    </div>
+                    {% endif %}
                   </div>
                 </div>
                 <div class="thread__details">

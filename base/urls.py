@@ -30,6 +30,7 @@ urlpatterns = [
     path('download/<str:filename>/', views.download_file, name='download'),
     # Conspects
     path('create-conspect/<str:pk>/', views.create_conspect, name='create-conspect'),
+    path('delete-conspect/<str:pk>/', views.delete_conspect, name='delete-conspect'),
     # Mobile/Expanded page
     path('topics/', views.topics_page, name='topics'),
     path('activity/', views.activity_page, name='activity'),
