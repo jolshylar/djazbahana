@@ -18,8 +18,6 @@ urlpatterns = [
     path('profile/<str:pk>/', views.user_profile, name='user-profile'),
     path('about/', views.about_page, name='about'),
     path('donate/', views.donate_page, name='donate'),
-    # Economy
-    path('balance/', balance, name='balance'),
     # CRUD endpoints
     path('create-classroom/', views.create_classroom, name='create-classroom'),
     path('update-classroom/<str:pk>/', views.update_classroom, name='update-classroom'),
