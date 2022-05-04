@@ -35,13 +35,17 @@
         </ul>
 
       <!-- Logged In -->
-      {% if request.user.is_authenticated %}
+      {% if user.is_authenticated %}
       <div class="header__user">
         <a href="{% url 'user-profile' user.id %}">
           <div class="avatar avatar--medium active">
-            <img src="{{request.user.avatar.url}}" />
+            <img src="{{user.avatar.url}}" />
           </div>
-          <p>{{request.user.name}} <span>@{{request.user.username}}</span></p>
+          {% if user.name %}
+          <p>{{user.name}} <span>@{{user.username}}</span></p>
+          {% else %}
+          <p>@{{user.username}}</p>
+          {% endif %}
         </a>
         <button class="dropdown-button">
           <img src="{% static 'images/icons/chevron-down.svg' %}" />
