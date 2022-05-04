@@ -1,4 +1,4 @@
-![Logo](./static/images/logo.png)
+![Logo](./static/images/logo_dark.png)
 
 ~ *hosting soon*
 
