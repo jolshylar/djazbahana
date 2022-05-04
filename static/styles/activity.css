@@ -3,7 +3,7 @@
 ================================*/
 
 .activities {
-  background: var(--color-dark);
+  background: var(--color-components);
   border-radius: 5px;
 }
 

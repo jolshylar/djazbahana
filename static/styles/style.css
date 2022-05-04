@@ -3,13 +3,34 @@
 :root {
   --color-main: #71c6dd;
   --color-main-light: #e1f6fb;
-  --color-dark: #111329;
-  --color-dark-medium: #51546e;
+  --color-header-footer: #111329;
+  --color-components: #111329;
+  --color-input: #51546e;
   --color-dark-light: #393b57;
+  --color-dark: #000;
   --color-light: #e5e5e5;
   --color-gray: #8b8b8b;
   --color-light-gray: #b2bdbd;
   --color-bg: #0e1631;
+  --color-header-links: #8b8b8b;
+  --color-success: #5dd693;
+  /* Theme toggle */
+  --toggle-light: hsl(230, 22%, 74%);
+  --toggle-dark: linear gradient hsl(210, 78%, 56%) to hsl(146, 68%, 55%);
+}
+
+.light {
+  --color-main: #de950d;
+  --color-main-light: #e1f6fb;
+  --color-header-footer: #ffffff;
+  --color-components: #f0f8ff;
+  --color-input: #c0c0c0;
+  --color-light: #c1c1c1;
+  --color-gray: #000000;
+  --color-light-gray: #939bc2;
+  --color-bg: #f0f0f0;
+  --color-dark: #fefefe;
+  --color-header-links: #000000;
   --color-success: #5dd693;
 }
 
@@ -203,7 +224,7 @@ Components
 
 .header {
   padding: 1.5rem;
-  background-color: var(--color-dark);
+  background-color: var(--color-header-footer);
 }
 
 .login-word {
@@ -233,7 +254,7 @@ Components
 }
 
 .header__search > label {
-  background-color: var(--color-dark-medium);
+  background-color: var(--color-input);
   padding: 1.3rem 1rem;
   display: flex;
   align-items: center;
@@ -260,7 +281,7 @@ Components
   align-items: center;
   font-weight: 500;
   text-decoration: none;
-  color: var(--color-gray);
+  color: var(--color-header-links);
 }
 
 .header__menu img {
@@ -298,7 +319,7 @@ Components
 }
 
 .pages a:hover {
-  color: #fff;
+  color: var(--color-main);
   transition: 0.2s linear; 
 }
 
@@ -306,6 +327,10 @@ Components
   display: flex;
   justify-content: space-between;
   gap: 5rem;
+}
+
+.bar {
+  display: none;
 }
 
 /* =============
@@ -350,12 +375,117 @@ Media
   .footer {
     width: 100%
   }
-
+  
   .layout--3 {
     width: 100%;
     display: block;
   }
+  
+  /* Hamburger menu */
+  .menu {
+    width: 50px;
+    height: 30px;
+    top: 30px;
+    right: 10px;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
 
+  .line {
+    width: 50px;
+    height: 3px;
+    background-color: rgb(255, 255, 255);
+    transition: 1.5s;
+    -webkit-transition: 1.5s;
+    -moz-transition: 1.5s;
+    -ms-transition: 1.5s;
+    -o-transition: 1.5s;
+  }
+  
+  .menu :hover {
+    box-shadow: 4px 4px 30px 4px gray;
+  }
+  
+  .line :hover {
+    box-shadow: 4px 4px 30px 4px gray;
+  }
+  
+  .change .line1 {
+    transform: rotateZ(-405deg) translate(-8px, 6px);
+    -webkit-transform: rotateZ(-405deg) translate(-8px, 6px);
+    -moz-transform: rotateZ(-405deg) translate(-8px, 6px);
+    -ms-transform: rotateZ(-405deg) translate(-8px, 6px);
+    -o-transform: rotateZ(-405deg) translate(-8px, 6px);
+    transition: 1.5s;
+    -webkit-transition: 1.5s;
+    -moz-transition: 1.5s;
+    -ms-transition: 1.5s;
+    -o-transition: 1.5s;
+  }
+  
+  .change .line2 {
+    opacity: 0;
+  }
+  
+  .change .line3 {
+    transform: rotateZ(405deg) translate(-8px, -6px);
+    -webkit-transform: rotateZ(405deg) translate(-8px, -6px);
+    -moz-transform: rotateZ(405deg) translate(-8px, -6px);
+    -ms-transform: rotateZ(405deg) translate(-8px, -6px);
+    -o-transform: rotateZ(405deg) translate(-8px, -6px);
+    transition: 1.5s;
+    -webkit-transition: 1.5s;
+    -moz-transition: 1.5s;
+    -ms-transition: 1.5s;
+    -o-transition: 1.5s;
+  }
+  
+  .change {
+    right: 0;
+    transition: 1.5s;
+    -webkit-transition: 1.5s;
+    -moz-transition: 1.5s;
+    -ms-transition: 1.5s;
+    -o-transition: 1.5s;
+    z-index: 200;
+  }
+
+  .list-link {
+    list-style-type: none;
+  }
+  
+  .list-link a {
+    text-decoration: none;
+    color: white;
+    font-family: "Nunito", sans-serif;
+    font-size: 25px;
+    text-align: left;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  .list-link a:hover {
+    box-shadow: 4px 4px 30px 4px white;
+    border-bottom: 1px solid yellow;
+    transition: 1.5s;
+    -webkit-transition: 1.5s;
+    -moz-transition: 1.5s;
+    -ms-transition: 1.5s;
+    -o-transition: 1.5s;
+  }
+  
+  .list {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
 }
 
 @media screen and (min-width: 480px) {
@@ -411,7 +541,7 @@ Media
   top: 50%;
   left: 50%;
   transform: translate(-50%, -46%);
-  background-color: var(--color-dark);
+  background-color: var(--color-components);
   border-radius: 1rem;
   box-shadow: 1px 1px 6px 3px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -542,7 +672,7 @@ Media
 
 .classroomListRoom {
   margin-bottom: 2.4rem;
-  background-color: var(--color-dark);
+  background-color: var(--color-components);
   border-radius: 1rem;
   padding: 2rem;
 }
@@ -596,7 +726,7 @@ Media
 }
 
 .classroomListRoom__meta {
-  border-top: 1px solid var(--color-dark-medium);
+  border-top: 1px solid var(--color-input);
   padding-top: 1rem;
   display: flex;
   align-items: center;
@@ -625,7 +755,7 @@ Media
 
 .classroomListRoom__topic {
   padding: 5px 1.5rem;
-  background-color: var(--color-dark-medium);
+  background-color: var(--color-input);
   border-radius: 5rem;
   font-weight: 500;
   font-size: 1.3rem;
@@ -703,4 +833,61 @@ Profile Page
 
 .topics-page .header__search {
   display: block;
+}
+
+/* ===== Theme Toggle ===== */
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+/* Hide default html checkbox */
+.switch input {
+  opacity: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--toggle-light);
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 32px;
+  bottom: 5px;
+  background-color: #fff;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background: linear-gradient(90grad, hsl(210, 78%, 56%), hsl(146, 68%, 55%));
+}
+
+input:checked + .slider:before {
+  transform: translateX(-24px);
+}
+.slider,
+.round {
+  border-radius: 34px;
+}
+
+.round::before {
+  border-radius: 50%;
+}
+
+input:checked + .round::before {
+  background-color: hsl(230, 17%, 14%);
 }

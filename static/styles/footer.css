@@ -2,7 +2,7 @@
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: var(--color-dark);
+  background-color: var(--color-header-footer);
   z-index: 999;
 }
 
