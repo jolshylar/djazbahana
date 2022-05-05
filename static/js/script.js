@@ -65,5 +65,3 @@ function checkTheme() {
 // function hamburgerMenu () {
 //   navi.toggleClass("change");
 // };
-
-

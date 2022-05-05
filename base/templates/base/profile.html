@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load base_extras %}
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'styles/profile.css' %}" />
@@ -29,7 +30,7 @@
         <div class="profile__about">
           <h3>About</h3>
           {% if user.bio %}
-          <p>{{ user.bio }}</p>
+          <p>{{ user.bio | convert_markdown | safe }}</p>
           {% else %}
           <p>No bio yet 💀</p>
           {% endif %}
