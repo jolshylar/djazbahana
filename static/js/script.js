@@ -50,18 +50,27 @@ window.onload = checkTheme();
 function checkTheme() {
   const localStorageTheme = localStorage.getItem("theme")
 
-  if (localStorageTheme !== null && localStorageTheme === "dark") {
+  if (localStorageTheme !== null) {
     document.body.className = localStorageTheme;
-
     const themeSwitch = document.getElementById("theme-switch");
     themeSwitch.checked = true;
   }
 }
 
-// // Hamburger-menu script
-// let menu = document.querySelector(".menu");
-// let navi = document.querySelector(".bar");
+// Hamburger-menu script
+let menu = document.getElementById("menu");
+let navi = document.getElementById("bar");
+let wrapper = document.getElementById("list-wrapper");
+let counter = 3;
 
-// function hamburgerMenu () {
-//   navi.toggleClass("change");
-// };
+function hamburgerMenu() {
+  if(counter%2 == 1) {
+    counter++;
+    navi.classList.add("change");
+    wrapper.classList.remove("list-wrapper");
+  } else {
+    counter++;
+    navi.classList.remove("change");
+    wrapper.classList.add("list-wrapper");
+  }
+};
