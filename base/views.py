@@ -203,6 +203,29 @@ def update_classroom(request, pk):
 
 
 @login_required(login_url='login')
+def confirm_payment(request, pk):
+    user = request.user
+    conspect = Conspect.objects.get(id=pk)
+
+    if user == conspect.author:
+        # TODO: redirect to download the conspect directly
+        return HttpResponse("You're the author of this conspect.")
+        # return redirect('classroom', conspect.classroom.id)
+
+    if request.method == 'POST':
+        user.balance -= 100
+        conspect.author.balance += 100
+        user.save()
+        conspect.author.save()
+        messages.info(request, 'Purchase have been successfully done.')
+        return FileResponse(open(f'{settings.BASE_DIR}/static/{conspect}', "rb"))
+        # return redirect(str(conspect))
+
+    context = {'conspect': conspect}
+    return render(request, 'base/confirm.html', context)
+
+
+@login_required(login_url='login')
 def delete_classroom(request, pk):
     classroom = Classroom.objects.get(id=pk)
 

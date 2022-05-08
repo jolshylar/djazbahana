@@ -5,7 +5,7 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'styles/classroom.css' %}" />
 <main class="profile-page layout layout--2">
-  <div class="container">
+  <div class="container container-main">
     <div class="classroom">
       <div class="classroom__top">
         <div class="classroom__topLeft">
@@ -146,7 +146,7 @@
                   </div>
                 </div>
                 <div class="thread__details">
-                  <a href="{% static conspect %}"> {{ conspect }} </a>
+                  <a href="{% url 'confirm-payment' conspect.id %}">{{ conspect }}</a>
                 </div>
               </div>
               {% endfor %}

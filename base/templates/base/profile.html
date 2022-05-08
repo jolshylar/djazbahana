@@ -5,7 +5,7 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'styles/profile.css' %}" />
 <main class="profile-page layout layout--3">
-  <div class="container">
+  <div class="container container-main">
     {% include 'components/topics_component.html' %}
 
     <div class="classroomList">
@@ -39,7 +39,7 @@
 
           <h3>Balance</h3>
             <div class="layout__body__balance">
-              <h1 class="jpcoin_balance">Current balance: 0.00</h1>
+              <h1 class="jpcoin_balance">Current balance: {{user.balance}}</h1>
               <img class="header__jpcoin" src="{% static 'images/jazbapoint.png' %}"/>
           </div>
         </div>

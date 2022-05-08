@@ -22,6 +22,7 @@ urlpatterns = [
     # Conspects
     path('create-conspect/<str:pk>/', views.create_conspect, name='create-conspect'),
     path('delete-conspect/<str:pk>/', views.delete_conspect, name='delete-conspect'),
+    path('confirm-payment/<str:pk>/', views.confirm_payment, name='confirm-payment'),
     # Mobile/Expanded page
     path('topics/', views.topics_page, name='topics'),
     path('activity/', views.activity_page, name='activity'),

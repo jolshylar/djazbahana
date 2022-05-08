@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles/confirm.css' %}" />
+<main class="delete-item layout">
+  <div class="container">
+    <div class="layout__box">
+      <div class="layout__boxHeader">
+        <div class="layout__boxTitle">
+          <a href="{{request.META.HTTP_REFERER}}">
+            <img src="{% static 'images/icons/arrow-left.svg' %}" />
+          </a>
+          <h3>Back</h3>
+        </div>
+      </div>
+      <div class="layout__body">
+        <form class="form" action="" method="post">
+          {% csrf_token %}
+          <div class="form__group">
+            <p>Are you sure you want to purchase "{{conspect}}"?</p>
+          </div>
+
+          <div class="for__group">
+            <input class="btn btn--main" type="submit" value="Confirm" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock content %}
