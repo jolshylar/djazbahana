@@ -1,5 +1,5 @@
 # JazbaHana
-~ социальная сеть для учащихся, которым нужно фокусироваться на подготовке к тестированиям
+- ~ Cоциальная сеть для учащихся, которым нужно фокусироваться на подготовке к тестированиям
 
 ---
 
@@ -17,7 +17,10 @@
 
 ---
 
-# О авторах
-- Дастан Өзгелді (Dositan) - Backend
-- Бек Сламбек (MugiD) - Frontend
-- Дарын Жантілеу (darynzhantileu) - Graphic Design
+# Об авторах
+- [Дастан Өзгелді](https://instagram.com/dastanozgeldi) - Backend
+- [Али Ауған](https://instagram.com/ali_augan) - Learner Guy
+- [Бек Сламбек](https://instagram.com/sbek22) - Frontend
+- [Алтынай Жеңісқызы](https://instagram.com/sheisgoldenmoon) - SMM Management
+- [Дарын Жантілеу](https://instagram.com/darynzhantileu) - Graphic Design
+- [Иманали Көксал](https://instagram.com/imanalikoksal) - Game Design

@@ -2,10 +2,37 @@
 
 .about-page {
   font-size: 2rem;
-  margin: 20px 160px;
+  margin: 5%;
+  box-shadow: 1px 1px 6px 3px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-components); 
+  border-radius: 10px;
 }
 
 .about-page h1 {
-  font-size: 2rem;
-  /* text-align: center; */
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.about-page ul {
+  list-style-position: inside;
+}
+
+.about-page li {
+  margin-left: 5%;
+}
+
+@media screen and (max-width: 480px) {
+  .about-page {
+    font-size: 1.5rem;
+    margin: 5% 0;
+  }
+
+  .about-page h1 {
+    font-size: 2srem;
+    padding-top: 1rem;
+  }
+  
+  .about-page li {
+    margin-left: 1%;
+  }
 }
