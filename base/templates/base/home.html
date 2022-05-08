@@ -3,7 +3,7 @@
 
 {% block content %}
 <main class="layout layout--3">
-  <div class="container">
+  <div class="container" id="container">
     {% include 'components/topics_component.html' %}
 
     <div class="classroomList">
@@ -35,7 +35,11 @@
         </a>
       </div>
       <div class="classroomListRooms">
+
       {% include 'components/feed_component.html' %}
+
+      {% include 'components/pagination.html' %}
+
     </div>
     </div>
 

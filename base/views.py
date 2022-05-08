@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.conf import settings
+from django.core.paginator import Paginator
 
 from .forms import ConspectForm, CustomUserCreationForm, UserForm, ClassroomForm
 from .models import Classroom, Conspect, User, Message, Topic
@@ -18,12 +19,16 @@ def home(request):
         Q(name__icontains=q) |
         Q(description__icontains=q)
     )
+    paginator = Paginator(classrooms, 5)  # show 5 posts per page
+    number = request.GET.get('page')
+    page_obj = paginator.get_page(number)
+
     topics = Topic.objects.all()[0:5]
     classroom_count = classrooms.count()
     classroom_messages = Message.objects.filter(Q(classroom__topic__name__icontains=q))[0:5]
 
     context = {
-        'classrooms': classrooms,
+        'page_obj': page_obj,
         'topics': topics,
         'classroom_count': classroom_count,
         'classroom_messages': classroom_messages,

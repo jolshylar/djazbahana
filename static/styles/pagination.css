@@ -1,0 +1,8 @@
+.pagination {
+    margin-bottom: 2.5rem;
+}
+
+.step-links {
+    display: flex;
+    justify-content: space-evenly;
+}
