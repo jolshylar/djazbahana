@@ -4,7 +4,7 @@
 
 .classroom,
 .students {
-  background: var(--color-dark);
+  background: var(--color-components);
   /* max-height: max-content; */
   border-radius: 0.7rem;
   overflow: hidden;
@@ -76,7 +76,7 @@
   overflow-y: auto;
   /* position: absolute; */
   width: 100%;
-  background: var(--color-dark);
+  background: var(--color-components);
   z-index: 999;
   top: 4.4rem;
   padding-top: 2rem;
@@ -232,6 +232,7 @@
   width: 90%;
   background-color: var(--color-dark-light);
   border: none;
+  padding-left: 10px;
 }
 
 .classroom__message > form {
@@ -243,22 +244,15 @@
   border-radius: 0.7rem;
   height: 4.5rem;
   width: 100%;
-  padding: 1.2rem;
+  /* padding: 1.2rem; */
   font-size: 1.4rem;
   font-weight: 500;
   position: relative;
   height: 40px;
 }
 
-form .send__button {
-  width: 10%;
-  border: none;
-  align-items: center;
-  cursor: pointer;
-  border-radius: 5px;
-  font-weight: 500;
-  background-color: var(--color-main);
-  color: var(--color-light);
+.classroom__message button {
+  height: 100%;
 }
 
 .classroom__message > form > input::placeholder {
@@ -410,15 +404,6 @@ form .send__button {
   height: 40px;
 }
 
-/* .conspect__upload .send__button {
-  width: 10%;
-  border: none;
-  align-items: center;
-  cursor: pointer;
-  border-radius: 5px;
-  font-weight: 500;
-} */
-
 .conspect__upload > form > input::placeholder {
   color: var(--color-light-gray);
 }
@@ -428,7 +413,7 @@ form .send__button {
 }
 
 .conspects {
-  background-color: var(--color-dark);
+  background-color: var(--color-components);
   margin-top: 20px;
   border-radius: 0.7rem;
 }
@@ -438,6 +423,6 @@ form .send__button {
 }
 
 .conspect__upload .btn--main {
-  margin-left: 30%;
+  margin-left: 35%;
   display: block;
 }

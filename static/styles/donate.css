@@ -4,7 +4,7 @@
   font-size: 2rem;
   margin: 5%;
   box-shadow: 1px 1px 6px 3px rgba(0, 0, 0, 0.1);
-  background-color: var(--color-components); 
+  background-color: var(--color-components);
   border-radius: 10px;
 }
 
@@ -22,6 +22,11 @@
   margin-left: 5%;
 }
 
+.donate-page p {
+  text-align: center;
+  padding: 10px;
+}
+
 @media screen and (max-width: 480px) {
   .donate-page {
     font-size: 1.5rem;
@@ -32,7 +37,7 @@
     font-size: 2srem;
     padding-top: 1rem;
   }
-  
+
   .donate-page li {
     margin-left: 1%;
   }
