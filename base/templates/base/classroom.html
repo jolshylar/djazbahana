@@ -87,9 +87,7 @@
         <form action="" method="post">
           {% csrf_token %}
           <input name="body" placeholder="Write your message..." />
-          <!-- <a href="{% url 'classroom' classroom.id %}">
-            <button class="send__button" type="submit">Send</button>
-          </a> -->
+          <button type="submit" class="btn btn--main">Send</button>
         </form>
       </div>
     </div>
