@@ -74,6 +74,16 @@ code {
 /*========== 
 Components
  ==========*/
+svg > .arrow-left,
+svg > .remove,
+svg > .search {
+  fill: var(--color-light-gray);
+}
+
+svg > .chevron-down {
+  fill: var(--color-main);
+}
+
 .container {
   max-width: 120rem;
   width: 90%;
@@ -234,12 +244,11 @@ Components
 
 .header > .container {
   display: flex;
-  /* gap: 9.5rem; */
   justify-content: space-between;
 }
 
 .header__logo > img {
-  height: 50px;
+  height: 56px;
 }
 
 .header__search > label {
@@ -249,6 +258,7 @@ Components
   align-items: center;
   gap: 1rem;
   border-radius: 4px;
+  height: 100%;
 }
 
 .header__search input {
@@ -257,12 +267,6 @@ Components
   border: none;
   outline: none;
   color: var(--color-light);
-}
-
-.nav-bar {
-  display: flex;
-  justify-content: space-between;
-  gap: 5rem;
 }
 
 #menu {
@@ -333,22 +337,24 @@ Components
 
 .change .list-link {
   list-style-type: none;
+  width: 100%;
+  text-align: center;
 }
 
 .list-wrapper .list {
-  display: none;
+  position: absolute;
+  top: -400px;
 }
 
 .change .list-link a {
   color: var(--color-light);
   font-size: 2rem;
-  text-align: right;
 }
 
 .change .list-link a:hover {
-  text-shadow: 4px 4px 30px 4px white;
-  border-bottom: 1px solid yellow;
+  text-shadow: 4px 4px 30px 4px var(--color-light);
   transition: 1.5s;
+  border-bottom: 1px solid yellow;
   -webkit-transition: 1.5s;
   -moz-transition: 1.5s;
   -ms-transition: 1.5s;
@@ -358,14 +364,15 @@ Components
 .change .list {
   height: 200px;
   position: absolute;
-  background-color: var(--color-header-footer);
-  top: 66px;
+  top: 83px;
   left: 0;
+  background-color: var(--color-header-footer);
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  transition: 1s;
 }
 
 /* =============
@@ -388,16 +395,6 @@ Media
   .header__search input {
     width: 20rem;
   }
-
-  .header > .container {
-    gap: 3rem;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .header__logo h1 {
-    display: none;
-  }
 }
 
 @media screen and (max-width: 480px) {
@@ -406,8 +403,13 @@ Media
     display: none;
   }
 
+  .change .list {
+    top: 73.6px;
+  }
+
   .header__logo > img {
-    height: 40px;
+    height: 43px;
+    padding-top: 13.6px;
   }
 
   .footer {
@@ -427,10 +429,32 @@ Media
   .classroomList {
     width: 100%;
   }
-
 }
 
-@media screen and (min-width: 481px) {
+@media screen and (max-width: 700px) {
+
+  .header__search {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .layout--3 {
+    width: 100%;
+    display: block;
+  }
+
+  .container-main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .classroomList {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 700px) {
   .mobile-menu {
     display: none;
   }
@@ -579,7 +603,7 @@ Media
   gap: 3rem;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 700px) {
   .mobile-menu .header__search {
     display: block;
     margin-bottom: 2.4rem;

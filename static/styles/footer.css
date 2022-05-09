@@ -2,6 +2,8 @@
   width: 100%;
   background-color: var(--color-header-footer);
   z-index: 999;
+  /* position: absolute;
+  bottom: 0; */
 }
 
 .footer a {
