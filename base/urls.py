@@ -25,5 +25,5 @@ urlpatterns = [
     path('confirm-payment/<str:pk>/', views.confirm_payment, name='confirm-payment'),
     # Mobile/Expanded page
     path('topics/', views.topics_page, name='topics'),
-    path('activity/', views.activity_page, name='activity'),
+    path('activities/', views.activities_page, name='activities'),
 ]
