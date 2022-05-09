@@ -1,3 +1,4 @@
+// ===== Dropdown Menu =====
 const dropdownMenu = document.querySelector(".dropdown-menu");
 const dropdownButton = document.querySelector(".dropdown-button");
 
@@ -7,7 +8,7 @@ if (dropdownButton) {
   });
 }
 
-// Upload Image
+// ===== Upload Image =====
 const photoInput = document.querySelector("#avatar");
 const photoPreview = document.querySelector("#preview-avatar");
 if (photoInput)
@@ -18,43 +19,37 @@ if (photoInput)
     }
   };
 
-// Scroll to Bottom
+// ===== Scroll to Bottom =====
 const conversationThread = document.querySelector(".classroom__box");
 if (conversationThread)
   conversationThread.scrollTop = conversationThread.scrollHeight;
 
-// Toggle light theme
+// ===== Toggle Light Theme =====
 const themeSwitcher = document.getElementById("theme-switch");
 
-let logo = document.getElementById("logo");
-themeSwitcher.checked = true;
-
 function toggleTheme() {
-  let curTheme = (this.checked) ? "light" : "dark";
-  let oldTheme = (this.checked) ? "dark" : "light";
+  let curTheme = this.checked ? "light" : "dark";
+  let oldTheme = this.checked ? "dark" : "light";
 
   document.body.classList.replace(oldTheme, curTheme);
   localStorage.setItem("theme", curTheme);
-  logo.src = `../images/logo_${curTheme}.png`;
 }
 
 themeSwitcher.addEventListener("click", toggleTheme);
 
-window.onload = checkTheme();
-
 function checkTheme() {
   const localStorageTheme = localStorage.getItem("theme");
-
   if (localStorageTheme !== null) {
     document.body.className = localStorageTheme;
     const themeSwitch = document.getElementById("theme-switch");
-    checked = (localStorageTheme === "light") ? true : false;
+    checked = localStorageTheme === "light" ? true : false;
     themeSwitch.checked = checked;
-    logo.src = `../images/logo_${localStorageTheme}.png`
   }
 }
 
-// Hamburger-menu script
+window.onload = checkTheme();
+
+// ===== Hamburger Menu =====
 let menu = document.getElementById("menu");
 let navi = document.getElementById("bar");
 let wrapper = document.getElementById("list-wrapper");
