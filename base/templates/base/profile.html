@@ -13,7 +13,6 @@
         <div class="profile__avatar">
           <div class="avatar avatar--large active">
             <img src="{{user.avatar.url}}" />
-            
           </div>
         </div>
         <div class="profile__info">
@@ -52,9 +51,11 @@
         </div>
       </div>
       {% include 'components/feed_component.html' %}
+
+      {% include 'components/pagination_component.html' %}
     </div>
 
-    {% include 'components/activity_component.html' %}
+    {% include 'components/activities_component.html' %}
   </div>
 </main>
 {% endblock content %}

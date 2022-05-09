@@ -19,7 +19,7 @@ def home(request):
         Q(name__icontains=q) |
         Q(description__icontains=q)
     )
-    paginator = Paginator(classrooms, 5)  # show 5 posts per page
+    paginator = Paginator(classrooms, 3)
     number = request.GET.get('page')
     page_obj = paginator.get_page(number)
 
@@ -130,11 +130,16 @@ def classroom(request, pk):
 def user_profile(request, pk):
     user = User.objects.get(id=pk)
     classrooms = user.classroom_set.all()
+
+    paginator = Paginator(classrooms, 3)
+    number = request.GET.get('page')
+    page_obj = paginator.get_page(number)
+
     classroom_messages = user.message_set.all()[0:2]
     topics = Topic.objects.all()
     context = {
         'user': user,
-        'classrooms': classrooms,
+        'page_obj': page_obj,
         'classroom_messages': classroom_messages,
         'topics': topics,
     }
@@ -207,10 +212,11 @@ def confirm_payment(request, pk):
     user = request.user
     conspect = Conspect.objects.get(id=pk)
 
+    def open_conspect(conspect):
+        return FileResponse(open(f'{settings.BASE_DIR}/static/{conspect}', "rb"))
+
     if user == conspect.author:
-        # TODO: redirect to download the conspect directly
-        return HttpResponse("You're the author of this conspect.")
-        # return redirect('classroom', conspect.classroom.id)
+        return open_conspect(conspect)
 
     if request.method == 'POST':
         user.balance -= 100
@@ -218,8 +224,7 @@ def confirm_payment(request, pk):
         user.save()
         conspect.author.save()
         messages.info(request, 'Purchase have been successfully done.')
-        return FileResponse(open(f'{settings.BASE_DIR}/static/{conspect}', "rb"))
-        # return redirect(str(conspect))
+        return open_conspect(conspect)
 
     context = {'conspect': conspect}
     return render(request, 'base/confirm.html', context)
@@ -293,7 +298,7 @@ def topics_page(request):
     return render(request, 'base/topics.html', context)
 
 
-def activity_page(request):
+def activities_page(request):
     classroom_messages = Message.objects.all()
     context = {'classroom_messages': classroom_messages}
-    return render(request, 'base/activity.html', context)
+    return render(request, 'base/activities.html', context)
