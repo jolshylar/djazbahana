@@ -1,30 +1,29 @@
-/* ===== Donate Page ===== */
+/* ===== Donation Page ===== */
 
 .donate-page {
   font-size: 2rem;
   margin: 5%;
   box-shadow: 1px 1px 6px 3px rgba(0, 0, 0, 0.1);
-  background-color: var(--color-components);
+  background-color: var(--color-components); 
   border-radius: 10px;
 }
 
 .donate-page h1 {
+  text-transform: uppercase;
   padding-top: 2rem;
-  font-size: 2rem;
   text-align: center;
 }
 
 .donate-page ul {
   list-style-position: inside;
+  list-style-type: none;
 }
 
-.donate-page li {
-  margin-left: 5%;
-}
-
+.donate-page li,
 .donate-page p {
+  margin-left: 20%;
+  margin-right: 20%;
   text-align: center;
-  padding: 10px;
 }
 
 @media screen and (max-width: 480px) {
@@ -37,7 +36,7 @@
     font-size: 2srem;
     padding-top: 1rem;
   }
-
+  
   .donate-page li {
     margin-left: 1%;
   }

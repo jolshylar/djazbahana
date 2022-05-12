@@ -1,26 +1,26 @@
-# JazbaHana
-- ~ Cоциальная сеть для учащихся, которым нужно фокусироваться на подготовке к тестированиям
+# JazbaHana 🌱
+- A social media for students who need to prepare for upcoming exams.
 
 ---
 
-# Актуальность
-- В процессе подготовки путем обычных, популярных социальных сетей пользователь может
-- множество раз подвергнуться спаму, ненужной информации или же рекламе.
-- Особенностью нашего проекта является изолирование подготовки учащихся в отдельную среду
+# Relevance 🙀
+- During the revising process through regular social media apps,
+- a user could get distracted easily [spam, ads, unwanted content].
+- The goal of our project is to isolate the revising environment for students.
 
 ---
 
-# Features
-- Дискуссии: находите общие интересующие вас темы
-- Конспекты: обменивайтесь нужными файлами, в нужном месте
-- Профили: составляйте свои портфолио с помощью био, аватара и открытых вами дискуссий
+# Features ✨
+- **Notes**: share the right files, in the right place
+- **Discussions**: find common topics that interest you
+- **Profiles**: build your portfolio with bio, avatar and discussions you open
 
 ---
 
-# Об авторах
-- [Дастан Өзгелді](https://instagram.com/dastanozgeldi) - Backend
-- [Али Ауған](https://instagram.com/ali_augan) - Learner Guy
-- [Бек Сламбек](https://instagram.com/sbek22) - Frontend
-- [Алтынай Жеңісқызы](https://instagram.com/sheisgoldenmoon) - SMM Management
-- [Дарын Жантілеу](https://instagram.com/darynzhantileu) - Graphic Design
-- [Иманали Көксал](https://instagram.com/imanalikoksal) - Game Design
+# About the Project Authors 💀
+- [Ali Augan](https://instagram.com/ali_augan) - Learner Guy
+- [Bek Slambek](https://instagram.com/sbek22) - Frontend
+- [Dastan Ozgeldi](https://instagram.com/dastanozgeldi) - Backend
+- [Imanali Koksal](https://instagram.com/imanalikoksal) - Game Design
+- [Daryn Zhantileu](https://instagram.com/darynzhantileu) - Graphic Design
+- [Altynai Zheniskyzy](https://instagram.com/sheisgoldenmoon) - SMM Management
