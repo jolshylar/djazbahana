@@ -13,7 +13,7 @@
   --color-light-gray: #b2bdbd;
   --color-bg: #0e1631;
   --color-header-links: #8b8b8b;
-  --color-success: #5dd693;
+  --color-status: #5dd693;
   /* Theme toggle */
   --toggle-light: hsl(230, 22%, 74%);
   --toggle-dark: linear gradient hsl(210, 78%, 56%) to hsl(146, 68%, 55%);
@@ -32,7 +32,7 @@
   --color-bg: #f0f0f0;
   --color-dark: #fefefe;
   --color-header-links: #000000;
-  --color-success: #5dd693;
+  --color-status: #5dd693;
 }
 
 /*========== base styles ==========*/
@@ -166,7 +166,7 @@ svg > .chevron-down {
 }
 
 .avatar.active::after {
-  background-color: var(--color-success);
+  background-color: var(--color-status);
 }
 
 .avatar.avatar--small img {
@@ -460,6 +460,13 @@ Media
   }
 }
 
+@media screen and (max-width: 900px) {
+  .activities,
+  .topics {
+    display: none;
+  }
+}
+
 /*==============================
 =>  Layout
 ================================*/
@@ -499,10 +506,8 @@ Media
 /*========== Layout Box ==========*/
 
 .layout__box {
-  margin-left: 600px;
-  margin-top: 400px;
-  margin-bottom: 100px;
-  width: 90%;
+  margin-left: 50%;
+  width: 80%;
   max-width: 48rem;
   min-height: 40rem;
   transform: translate(-50%, -46%);
@@ -540,12 +545,6 @@ Media
   margin: 3rem;
 }
 
-@media screen and (max-width: 900px) {
-  .activities,
-  .topics {
-    display: none;
-  }
-}
 
 /*==============================
 =>  Topics
