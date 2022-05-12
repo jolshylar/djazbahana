@@ -24,6 +24,7 @@
           <p>@{{user.username}}</p>
           {% if request.user == user %}
           <a href="{% url 'update-user' %}" class="btn btn--main btn--pill">Edit Profile</a>
+          <a href="#" class="btn btn--main btn--pill">Raise Balance</a>
           {% endif %}
         </div>
         <div class="profile__about">
@@ -36,11 +37,13 @@
 
           <hr />
 
+          {% if request.user == user %}
           <h3>Balance</h3>
-            <div class="layout__body__balance">
-              <h1 class="jpcoin_balance">Current balance: {{user.balance}}</h1>
-              <img class="header__jpcoin" src="{% static 'images/jazbapoint.png' %}"/>
+          <div class="layout__body__balance">
+            <h1 class="jpcoin_balance">Current balance: {{user.balance}}</h1>
+            <img class="header__jpcoin" src="{% static 'images/jazbapoint.png' %}"/>
           </div>
+          {% endif %}
         </div>
       </div>
 
