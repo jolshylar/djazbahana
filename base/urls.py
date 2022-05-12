@@ -10,7 +10,7 @@ urlpatterns = [
     # Info
     path('', views.home, name='home'),
     path('classroom/<str:pk>/', views.classroom, name='classroom'),
-    path('profile/<str:pk>/', views.user_profile, name='user-profile'),
+    path('u/<str:username>/', views.user_profile, name='user-profile'),
     path('about/', views.about_page, name='about'),
     path('donate/', views.donate_page, name='donate'),
     # CRUD endpoints

@@ -3,7 +3,7 @@
 {% for classroom in page_obj %}
 <div class="classroomListRoom">
   <div class="classroomListRoom__header">
-    <a href="{% url 'user-profile' classroom.host.id %}" class="classroomListRoom__author">
+    <a href="{% url 'user-profile' classroom.host.username %}" class="classroomListRoom__author">
       <div class="avatar avatar--small">
         <img src="{{classroom.host.avatar.url}}" />
       </div>

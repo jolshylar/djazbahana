@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{% static 'styles/activities.css' %}" />
 <main class="layout">
   <div class="container">
-    <div class="layout__box">
+    <div class="layout__box activity__box">
       <div class="layout__boxHeader">
         <div class="layout__boxTitle">
           <a href="{% url 'home' %}">
@@ -25,7 +25,7 @@
         <div class="activities__box">
           <div class="activities__boxHeader classroomListRoom__header">
             <a
-              href="{% url 'user-profile' message.author.id %}"
+              href="{% url 'user-profile' message.author.username %}"
               class="classroomListRoom__author"
             >
               <div class="avatar avatar--small">

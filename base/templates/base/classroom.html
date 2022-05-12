@@ -42,7 +42,7 @@
           <div class="classroom__hosted">
             <p>Hosted By</p>
             <a
-              href="{% url 'user-profile' classroom.host.id %}"
+              href="{% url 'user-profile' classroom.host.username %}"
               class="classroom__author"
             >
               <div class="avatar avatar--small">
@@ -61,7 +61,7 @@
               <div class="thread__top">
                 <div class="thread__author">
                   <a
-                    href="{% url 'user-profile' message.author.id %}"
+                    href="{% url 'user-profile' message.author.username %}"
                     class="thread__authorInfo"
                   >
                     <div class="avatar avatar--small">
@@ -110,7 +110,7 @@
         </h3>
         <div class="students__list scroll">
           {% for user in students %}
-          <a href="{% url 'user-profile' user.id %}" class="student">
+          <a href="{% url 'user-profile' user.username %}" class="student">
             <div class="avatar avatar--medium">
               <img src="{{user.avatar.url}}" />
             </div>
@@ -136,7 +136,7 @@
                 <div class="thread__top">
                   <div class="thread__author">
                     <a
-                      href="{% url 'user-profile' conspect.author.id %}"
+                      href="{% url 'user-profile' conspect.author.username %}"
                       class="thread__authorInfo"
                     >
                       <div class="avatar avatar--small">

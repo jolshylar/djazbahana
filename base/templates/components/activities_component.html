@@ -10,7 +10,7 @@
       {% for message in classroom_messages %}
       <div class="activities__box">
         <div class="activities__boxHeader roomListRoom__header">
-          <a href="{% url 'user-profile' message.author.id %}" class="classroomListRoom__author">
+          <a href="{% url 'user-profile' message.author.username %}" class="classroomListRoom__author">
             <div class="avatar avatar--small">
               <img src="{{message.author.avatar.url}}" />
             </div>

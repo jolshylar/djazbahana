@@ -13,8 +13,9 @@ from .models import Classroom, Conspect, User, Message, Topic
 
 def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
-
+    user = User.objects.filter(username__icontains=q).first()
     classrooms = Classroom.objects.filter(
+        Q(host=user) |
         Q(topic__name__icontains=q) |
         Q(name__icontains=q) |
         Q(description__icontains=q)
@@ -127,8 +128,8 @@ def classroom(request, pk):
     return render(request, 'base/classroom.html', context)
 
 
-def user_profile(request, pk):
-    user = User.objects.get(id=pk)
+def user_profile(request, username):
+    user = User.objects.filter(username__icontains=username).first()
     classrooms = user.classroom_set.all()
 
     paginator = Paginator(classrooms, 3)
