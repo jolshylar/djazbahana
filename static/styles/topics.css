@@ -24,3 +24,7 @@
 .topics-page .header__search {
   display: block;
 }
+
+.topic__box {
+  margin-top: 300px;
+}
