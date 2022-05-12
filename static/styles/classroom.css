@@ -1,24 +1,9 @@
-/*==============================
-=>  Classroom
-================================*/
-
 .classroom,
 .students {
   background: var(--color-components);
-  /* max-height: max-content; */
   border-radius: 0.7rem;
   overflow: hidden;
   position: relative;
-}
-
-@media screen and (max-width: 900px) {
-  .students {
-    display: none;
-  }
-
-  .layout--2 > .container > div:first-child {
-    flex-basis: 100%;
-  }
 }
 
 .classroom__top,
@@ -83,13 +68,6 @@
   padding-bottom: 1rem;
 }
 
-@media screen and (max-width: 500px) {
-  .classroom__header {
-    top: 4.3rem;
-    padding-right: 2rem;
-  }
-}
-
 .classroom {
   margin-bottom: 200px;
 }
@@ -98,18 +76,7 @@
   padding-left: 2rem;
   padding-right: 2rem;
   height: max-content;
-  /* overflow-y: auto; */
   padding-bottom: 0;
-}
-
-@media screen and (max-width: 500px) {
-  .classroom__box {
-    padding-left: 2.5rem;
-    padding-right: 2rem;
-    height: 80.5vh;
-    overflow-y: auto;
-    padding-bottom: 0;
-  }
 }
 
 .classroom__info {
@@ -313,16 +280,6 @@
   padding-bottom: 0;
 }
 
-@media screen and (max-width: 500px) {
-  .conspect__box {
-    padding-left: 2.5rem;
-    padding-right: 2rem;
-    height: 80.5vh;
-    overflow-y: auto;
-    padding-bottom: 0;
-  }
-}
-
 .conspect__info {
   display: flex;
   justify-content: space-between;
@@ -420,11 +377,46 @@
   border-radius: 0.7rem;
 }
 
-.conspect__conversation  .thread__author {
+.conspect__conversation .thread__author {
   display: block;
 }
 
 .conspect__upload .btn--main {
   margin-left: 35%;
   display: block;
+}
+
+/* =========================== Medias ============================= */
+
+@media screen and (max-width: 900px) {
+  .students {
+    display: none;
+  }
+
+  .layout--2 > .container > div:first-child {
+    flex-basis: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .conspect__box {
+    padding-left: 2.5rem;
+    padding-right: 2rem;
+    height: 80.5vh;
+    overflow-y: auto;
+    padding-bottom: 0;
+  }
+
+  .classroom__box {
+    padding-left: 2.5rem;
+    padding-right: 2rem;
+    height: 80.5vh;
+    overflow-y: auto;
+    padding-bottom: 0;
+  }
+
+  .classroom__header {
+    top: 4.3rem;
+    padding-right: 2rem;
+  }
 }
