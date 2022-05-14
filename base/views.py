@@ -1,84 +1,99 @@
-from django.http import HttpResponse, FileResponse
-from django.db.models import Q
+from typing import Any, Dict, Optional
+
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
-from django.conf import settings
 from django.core.paginator import Paginator
+from django.db.models import Q
+from django.http import FileResponse, HttpResponse
+from django.shortcuts import redirect, render
+from django.views import View
+from django.views.generic.base import RedirectView, TemplateView
+from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
 
-from .forms import ConspectForm, CustomUserCreationForm, UserForm, ClassroomForm
-from .models import Classroom, Conspect, User, Message, Topic
-
-
-def home(request):
-    q = request.GET.get('q') if request.GET.get('q') != None else ''
-    user = User.objects.filter(username__icontains=q).first()
-    classrooms = Classroom.objects.filter(
-        Q(host=user) |
-        Q(topic__name__icontains=q) |
-        Q(name__icontains=q) |
-        Q(description__icontains=q)
-    )
-    paginator = Paginator(classrooms, 3)
-    number = request.GET.get('page')
-    page_obj = paginator.get_page(number)
-
-    topics = Topic.objects.all()[0:5]
-    classroom_count = classrooms.count()
-    classroom_messages = Message.objects.filter(Q(classroom__topic__name__icontains=q))[0:5]
-
-    context = {
-        'page_obj': page_obj,
-        'topics': topics,
-        'classroom_count': classroom_count,
-        'classroom_messages': classroom_messages,
-    }
-    return render(request, 'base/home.html', context)
+from .forms import (ClassroomForm, ConspectForm, CustomUserCreationForm,
+                    UserForm)
+from .models import Classroom, Conspect, Message, Topic, User
 
 
-def read_markdown(filename):
+class HomeView(ListView):
+    template_name: str = 'base/home.html'
+    model = Classroom
+    context_object_name: Optional[str] = 'classrooms'
+    paginate_by: int = 3
+
+    def get_queryset(self):
+        q = self.request.GET.get('q') if self.request.GET.get('q') != None else ''
+        user = User.objects.filter(username__icontains=q).first()
+        return Classroom.objects.filter(
+            Q(host=user) |
+            Q(topic__name__icontains=q) |
+            Q(name__icontains=q) |
+            Q(description__icontains=q) 
+        )
+
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        q = self.request.GET.get('q') if self.request.GET.get('q') != None else ''
+
+        context = super().get_context_data(**kwargs)
+        context['topics'] = Topic.objects.all()[0:5]
+        context['classroom_count'] = Classroom.objects.count()
+        context['classroom_messages'] = Message.objects.filter(
+            Q(classroom__topic__name__icontains=q)
+        )[0:5]
+        return context
+
+
+def read_markdown(filename: str):
     with open(settings.BASE_DIR / f"static/markdown/{filename}.md", "r") as f:
         context = {'markdown_content': f.read()}
     return context
 
 
-def about_page(request):
-    context = read_markdown('about')
-    return render(request, 'base/about.html', context)
+class AboutPageView(TemplateView):
+    template_name: str = 'base/about.html'
+
+    def get_context_data(self) -> Dict[str, Any]:
+        return read_markdown('about')
 
 
-def donate_page(request):
-    context = read_markdown('donate')
-    return render(request, 'base/donate.html', context)
+class DonatePageView(TemplateView):
+    template_name: str = 'base/donate.html'
+
+    def get_context_data(self) -> Dict[str, Any]:
+        return read_markdown('donate')
 
 
-def register_page(request):
-    form = CustomUserCreationForm()
+class RegisterPageView(View):
+    def get(self, request):
+        form = CustomUserCreationForm()
+        context = {'form': form}
+        return render(request, 'base/login_register.html', context)
 
-    if request.method == 'POST':
+    def post(self, request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
             user.username = user.username.lower()
             user.save()
-            # Login right after registration
+            # Login after registration
             login(request, user)
             return redirect('home')
         else:
             messages.error(request, 'An error occurred during registration')
-    
-    context = {'form': form}
-    return render(request, 'base/login_register.html', context)
 
 
+class LoginPageView(View):
+    def get(self, request):
+        page = 'login'
+        if request.user.is_authenticated:
+            return redirect('home')
 
-def login_page(request):
-    page = 'login'
-    if request.user.is_authenticated:
-        return redirect('home')
+        return render(request, 'base/login_register.html', {'page': page})
 
-    if request.method == 'POST':
+    def post(self, request):
         email = request.POST.get('email').lower()
         password = request.POST.get('password')
 
@@ -94,13 +109,13 @@ def login_page(request):
         else:
             messages.error(request, 'Email or password entered wrong')
 
-    context = {'page': page}
-    return render(request, 'base/login_register.html', context)
 
+class LogoutRedirectView(RedirectView):
+    pattern_name: Optional[str] = 'home'
 
-def logout_user(request):
-    logout(request)
-    return redirect('home')
+    def get_redirect_url(self, *args: Any, **kwargs: Any) -> Optional[str]:
+        logout(self.request)
+        return super().get_redirect_url(*args, **kwargs)
 
 
 def classroom(request, pk):
@@ -128,23 +143,26 @@ def classroom(request, pk):
     return render(request, 'base/classroom.html', context)
 
 
-def user_profile(request, username):
-    user = User.objects.filter(username__icontains=username).first()
-    classrooms = user.classroom_set.all()
+class UserProfileDetailView(DetailView):
+    model = User
+    template_name: str = 'base/profile.html'
+    slug_field = 'username'
+    slug_url_kwarg = 'username'
 
-    paginator = Paginator(classrooms, 3)
-    number = request.GET.get('page')
-    page_obj = paginator.get_page(number)
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        user = User.objects.filter(username__icontains=self.kwargs.get('username')).first()
+        classrooms = user.classroom_set.all()
 
-    classroom_messages = user.message_set.all()[0:2]
-    topics = Topic.objects.all()
-    context = {
-        'user': user,
-        'page_obj': page_obj,
-        'classroom_messages': classroom_messages,
-        'topics': topics,
-    }
-    return render(request, 'base/profile.html', context)
+        paginator = Paginator(classrooms, 3)
+        number = self.request.GET.get('page')
+        page_obj = paginator.get_page(number)
+
+        context = super().get_context_data(**kwargs)
+        context['user'] = user
+        context['page_obj'] = page_obj
+        context['classroom_messages'] = user.message_set.all()
+        context['topics'] = Topic.objects.all()
+        return context
 
 
 @login_required(login_url='login')
@@ -179,7 +197,7 @@ def create_conspect(request, pk):
                 file=request.FILES['file'],
             )
             instance.save()
-            return redirect('classroom', classroom.id)
+            return redirect('classroom', pk=classroom.id)
     else:
         form = ConspectForm()
     context = {'form': form}
@@ -224,10 +242,10 @@ def confirm_payment(request, pk):
         conspect.author.balance += 100
         user.save()
         conspect.author.save()
-        messages.info(request, 'Purchase have been successfully done.')
+        messages.info(request, 'Purchase has been successfully done.')
         return open_conspect(conspect)
 
-    context = {'conspect': conspect}
+    context = {'state': 'confirm', 'obj': conspect}
     return render(request, 'base/confirm.html', context)
 
 
@@ -242,8 +260,8 @@ def delete_classroom(request, pk):
         classroom.delete()
         return redirect('home')
     
-    context = {'obj': classroom}
-    return render(request, 'base/delete.html', context)
+    context = {'state': 'confirm', 'obj': classroom}
+    return render(request, 'base/confirm.html', context)
 
 
 @login_required(login_url='login')
@@ -257,8 +275,8 @@ def delete_conspect(request, pk):
         conspect.delete()
         return redirect('classroom', conspect.classroom.id)
 
-    context = {'obj': conspect}
-    return render(request, 'base/delete.html', context)
+    context = {'state': 'confirm', 'obj': conspect}
+    return render(request, 'base/confirm.html', context)
 
 
 @login_required(login_url='login')
@@ -270,11 +288,10 @@ def delete_message(request, pk):
 
     if request.method == 'POST':
         message.delete()
-        # TODO: think whether to redirect to a parent message or home
-        return redirect('home')
+        return redirect('classroom', message.classroom.id)
 
-    context = {'obj': message}
-    return render(request, 'base/delete.html', context)
+    context = {'state': 'confirm', 'obj': message}
+    return render(request, 'base/confirm.html', context)
 
 
 @login_required(login_url='login')
@@ -292,14 +309,20 @@ def update_user(request):
     return render(request, 'base/update_user.html', context)
 
 
-def topics_page(request):
-    q = request.GET.get('q') if request.GET.get('q') != None else ''
-    topics = Topic.objects.filter(name__icontains=q)
-    context = {'topics': topics}
-    return render(request, 'base/topics.html', context)
+class TopicsPageView(TemplateView):
+    template_name: str = 'base/topics.html'
+
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        q = self.request.GET.get('q') or ''
+        context = super().get_context_data(**kwargs)
+        context['topics'] = Topic.objects.filter(name__icontains=q)
+        return context
 
 
-def activities_page(request):
-    classroom_messages = Message.objects.all()
-    context = {'classroom_messages': classroom_messages}
-    return render(request, 'base/activities.html', context)
+class ActivitiesPageView(TemplateView):
+    template_name: str = 'base/activities.html'
+
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        context['classroom_messages'] = Message.objects.all()
+        return context

@@ -1,18 +1,19 @@
 from django.urls import path
 
-from . import views
+from base import views
 
 urlpatterns = [
     # Authentication
-    path('register/', views.register_page, name='register'),
-    path('login/', views.login_page, name='login'),
-    path('logout/', views.logout_user, name='logout'),
+    path('register/', views.RegisterPageView.as_view(), name='register'),
+    path('login/', views.LoginPageView.as_view(), name='login'),
+    path('logout/', views.LogoutRedirectView.as_view(), name='logout'),
     # Info
-    path('', views.home, name='home'),
+    path('', views.HomeView.as_view(), name='home'),
     path('classroom/<str:pk>/', views.classroom, name='classroom'),
-    path('u/<str:username>/', views.user_profile, name='user-profile'),
-    path('about/', views.about_page, name='about'),
-    path('donate/', views.donate_page, name='donate'),
+    path('u/<str:username>/', views.UserProfileDetailView.as_view(), name='user-profile'),
+    # Markdown-Rendering Pages
+    path('about/', views.AboutPageView.as_view(), name='about'),
+    path('donate/', views.DonatePageView.as_view(), name='donate'),
     # CRUD endpoints
     path('create-classroom/', views.create_classroom, name='create-classroom'),
     path('update-classroom/<str:pk>/', views.update_classroom, name='update-classroom'),
@@ -24,6 +25,6 @@ urlpatterns = [
     path('delete-conspect/<str:pk>/', views.delete_conspect, name='delete-conspect'),
     path('confirm-payment/<str:pk>/', views.confirm_payment, name='confirm-payment'),
     # Mobile/Expanded page
-    path('topics/', views.topics_page, name='topics'),
-    path('activities/', views.activities_page, name='activities'),
+    path('topics/', views.TopicsPageView.as_view(), name='topics'),
+    path('activities/', views.ActivitiesPageView.as_view(), name='activities'),
 ]
