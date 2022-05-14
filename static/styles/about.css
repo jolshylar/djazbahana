@@ -35,8 +35,9 @@
     font-size: 2srem;
     padding-top: 1rem;
   }
-  
+
   .about-page li {
-    margin-left: 1%;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
