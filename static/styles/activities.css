@@ -41,10 +41,6 @@
   max-height: 300px;
 }
 
-.layout__box {
-  margin-top: 250px;
-}
-
 .activities__boxHeader p span {
   color: var(--color-gray);
   font-size: 1.2rem;
@@ -72,5 +68,5 @@
 }
 
 .activity__box {
-  margin-top: 400px;
+  margin-top: 250px;
 }
