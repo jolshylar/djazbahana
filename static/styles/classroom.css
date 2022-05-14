@@ -31,7 +31,7 @@
 }
 
 .classroom__topLeft h3 {
-  padding-bottom: 8px;
+  padding-bottom: 2px;
 }
 
 .classroom__topLeft h3,
@@ -196,7 +196,7 @@
 
 .classroom__message input {
   color: var(--color-main-light);
-  width: 90%;
+  width: 80%;
   background-color: var(--color-dark-light);
   border: none;
   outline: none;
@@ -221,7 +221,8 @@
 
 .classroom__message button {
   height: 100%;
-  width: 10%;
+  width: 20%;
+  display: block;
 }
 
 .classroom__message > form > input::placeholder {
@@ -389,23 +390,37 @@
 /* =========================== Medias ============================= */
 
 @media screen and (max-width: 900px) {
-  .students {
-    display: none;
-  }
-
   .layout--2 > .container > div:first-child {
     flex-basis: 100%;
   }
+
+  .classroom {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .upload__students {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+  }
+
+  .students {
+    width: 30%;
+  }
+
+  .conspects {
+    margin-top: 0;
+    width: 60%;
+  }
+
+  .students__list {
+    max-height: 400px;
+  }
 }
 
-@media screen and (max-width: 500px) {
-  .conspect__box {
-    padding-left: 2.5rem;
-    padding-right: 2rem;
-    height: 80.5vh;
-    overflow-y: auto;
-    padding-bottom: 0;
-  }
+@media screen and (max-width: 616px) {
 
   .classroom__box {
     padding-left: 2.5rem;
@@ -419,4 +434,30 @@
     top: 4.3rem;
     padding-right: 2rem;
   }
+
+  .classroom {
+    margin-bottom: 10px;
+  }
+
+  .upload__students {
+    display: block;
+  }
+
+  .students {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .students__list {
+    max-height: 137px;
+  }
+
+  .conspects {
+    height: max-content;
+    width: 100%;
+  }
+
+  .conspect__upload .btn--main {
+    margin-left: 40%;
+}
 }
