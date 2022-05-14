@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{% static 'styles/update_user.css' %}" />
 <main class="update-account layout">
   <div class="container">
-    <div class="layout__box">
+    <div class="layout__box" style="margin-top: 400px;">
       <div class="layout__boxHeader">
         <div class="layout__boxTitle">
             <a href="{% url 'home' %}">
@@ -29,7 +29,7 @@
           {% endfor %}
 
           <div class="form__action">
-            <a class="btn btn--dark" href="{% url 'home' %}">Cancel</a>
+            <a class="btn btn--dark" href="{{ request.META.HTTP_REFERER }}">Cancel</a>
             <button class="btn btn--main" type="submit">Update</button>
           </div>
         </form>

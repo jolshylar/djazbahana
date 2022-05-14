@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
-{% load static base_extras %}
+{% load static %}
+{% load base_extras %}
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'styles/profile.css' %}" />
@@ -20,7 +21,7 @@
           {% else %}
           <h3>No Name</h3>
           {% endif %}
-          <p>@{{ user.username }}</p>
+          <p>@{{user.username}}</p>
           {% if request.user == user %}
           <a href="{% url 'update-user' %}" class="btn btn--main btn--pill">Edit Profile</a>
           <a href="#" class="btn btn--main btn--pill">Raise Balance</a>
@@ -53,6 +54,7 @@
         </div>
       </div>
       {% include 'components/feed_component.html' %}
+
       {% include 'components/pagination_component.html' %}
     </div>
 

@@ -6,7 +6,6 @@
     <a href="{% url 'home' %}" class="header__logo">
       <img id="logo" src="{% static 'images/logo.png' %}" />
     </a>
-
     <form class="header__search" action="{% url 'home' %}">
       <label>
         <svg class="search" width="16" height="16" viewBox="0 0 32 32">
@@ -25,24 +24,28 @@
     </div>
 
     <nav id="bar">
-      <div id="menu" onclick="hamburgerMenu()">
-        <div class="line line1"></div>
-        <div class="line line2"></div>
-        <div class="line line3"></div>
-      </div>
-      <div id="list-wrapper" class="list-wrapper">
-        <ul class="list">
-          <li class="list-link"><a href="{% url 'home'%}">Home</a></li>
-          <li class="list-link"><a href="{% url 'about' %}">About</a></li>
-          <li class="list-link"><a href="{% url 'donate' %}">Donate</a></li>
-          {% if user.is_authenticated %}
-          <li class="list-link"><a href="{% url 'user-profile' user.username %}">Profile</a></li>
-          <li class="list-link"><a href="{% url 'logout' %}">Logout</a></li>
-          {% else %}
-          <li class="list-link"><a href="{% url 'login' %}">Login</a></li>
-          {% endif %}
-        </ul>
-      </div>
-    </nav>
-  </div>
+          <!-- Hamburger menu -->
+          <div id="menu" onclick="hamburgerMenu()">
+            <div class="line line1"></div>
+            <div class="line line2"></div>
+            <div class="line line3"></div>
+          </div>
+          <!-- A bunch of links -->
+        <div id="list-wrapper" class="list-wrapper">
+          <ul class="list">
+            <li class="list-link"><a href="{% url 'home'%}">Home</a></li>
+            <li class="list-link"><a href="{% url 'about' %}">About</a></li>
+            <li class="list-link"><a href="{% url 'donate' %}">Donate</a></li>
+              {% if user.is_authenticated %}
+            <li class="list-link"><a href="{% url 'user-profile' user.username %}">Profile</a></li>
+            <li class="list-link"><a href="{% url 'logout' %}">Logout</a></li>
+              {% else %}
+              <!-- User is not authenticated -->
+            <li class="list-link"><a href="{% url 'login' %}">Login</a></li>
+              {% endif %}
+          </ul>
+        </div>
+    </nav> 
+   
+</div>
 </header>

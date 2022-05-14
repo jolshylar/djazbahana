@@ -5,6 +5,7 @@
 <main class="layout layout--3">
   <div class="container container-main">
     {% include 'components/topics_component.html' %}
+
     <div class="classroomList">
       <div class="mobile-menu">
         <form class="header__search" action="{% url 'home' %}">
@@ -29,7 +30,7 @@
       <div class="classroomList__header">
         <div>
           <h2>Classroom</h2>
-          <p>{{ classroom_count }} Rooms available</p>
+          <p>{{classroom_count}} Rooms available</p>
         </div>
         <a class="btn btn--main" href="{% url 'create-classroom' %}">
           <svg class="add" width="32" height="32" viewBox="0 0 32 32">
@@ -40,10 +41,14 @@
         </a>
       </div>
       <div class="classroomListRooms">
-        {% include 'components/feed_component.html' %}
-        {% include 'components/pagination_component.html' %}
-      </div>
+
+      {% include 'components/feed_component.html' %}
+
+      {% include 'components/pagination_component.html' %}
+
     </div>
+    </div>
+
     {% include 'components/activities_component.html' %}
   </div>
 </main>
