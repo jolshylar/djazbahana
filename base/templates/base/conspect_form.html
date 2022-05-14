@@ -4,7 +4,7 @@
 {% block content %}
 <main class="create-conspect layout">
   <div class="container">
-    <div class="layout__box">
+    <div class="layout__box" style="margin-top: 150px; min-height: 10px;">
       <div class="layout__boxHeader">
         <div class="layout__boxTitle">
           <a href="{% url 'home' %}">
@@ -26,7 +26,7 @@
           </div>
 
           <div class="form__action">
-            <a class="btn btn--dark" href="{% url 'home' %}">Cancel</a>
+            <a class="btn btn--dark" href="{{ request.META.HTTP_REFERER }}">Cancel</a>
             <button class="btn btn--main" type="submit">Save</button>
           </div>
         </form>

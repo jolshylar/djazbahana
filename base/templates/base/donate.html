@@ -1,12 +1,9 @@
 {% extends 'base.html' %}
-{% load base_extras %}
-{% load static %}
+{% load static base_extras %}
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'styles/donate.css' %}" />
 <main dir="container__donate">
-    <div class="donate-page">
-        {{markdown_content | convert_markdown | safe}}
-    </div>
+  <div class="donate-page">{{ markdown_content | convert_markdown | safe }}</div>
 </main>
 {% endblock content %}

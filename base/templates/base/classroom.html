@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
-{% load base_extras %}
-{% load static %}
+{% load static base_extras %}
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'styles/classroom.css' %}" />
@@ -18,7 +17,7 @@
           <h3>Classroom</h3>
         </div>
 
-        {% if classroom.host == request.user %}
+        {% if request.user == classroom.host %}
         <div class="classroom__topRight">
           <a href="{% url 'update-classroom' classroom.id %}">
             <svg class="edit" id="light" enable-background="new 0 0 24 24" height="32" viewBox="0 0 24 24" width="32" xmlns="http://www.w3.org/2000/svg" fill="#b2bdbd"><g><path d="m23.5 22h-15c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h15c.276 0 .5.224.5.5s-.224.5-.5.5z"/></g><g><g><path d="m2.5 22c-.131 0-.259-.052-.354-.146-.123-.123-.173-.3-.133-.468l1.09-4.625c.021-.09.067-.173.133-.239l14.143-14.143c.565-.566 1.554-.566 2.121 0l2.121 2.121c.283.283.439.66.439 1.061s-.156.778-.439 1.061l-14.142 14.141c-.065.066-.148.112-.239.133l-4.625 1.09c-.038.01-.077.014-.115.014zm1.544-4.873-.872 3.7 3.7-.872 14.042-14.041c.095-.095.146-.22.146-.354 0-.133-.052-.259-.146-.354l-2.121-2.121c-.19-.189-.518-.189-.707 0zm3.081 3.283h.01z"/></g><g><path d="m17.889 10.146c-.128 0-.256-.049-.354-.146l-3.535-3.536c-.195-.195-.195-.512 0-.707s.512-.195.707 0l3.536 3.536c.195.195.195.512 0 .707-.098.098-.226.146-.354.146z"/></g></g></svg>
@@ -36,8 +35,8 @@
       <div class="classroom__box scroll">
         <div class="classroom__header scroll">
           <div class="classroom__info">
-            <h3>{{classroom.name}}</h3>
-            <span>{{classroom.created | timesince}} ago</span>
+            <h3>{{ classroom.name }}</h3>
+            <span>{{ classroom.created | timesince }} ago</span>
           </div>
           <div class="classroom__hosted">
             <p>Hosted By</p>
@@ -46,13 +45,13 @@
               class="classroom__author"
             >
               <div class="avatar avatar--small">
-                <img src="{{classroom.host.avatar.url}}" />
+                <img src="{{ classroom.host.avatar.url }}" />
               </div>
-              <span>@{{classroom.host.username}}</span>
+              <span>@{{ classroom.host.username }}</span>
             </a>
           </div>
-          <div class="classroom__details">{{classroom.description}}</div>
-          <span class="classroom__topics">{{classroom.topic}}</span>
+          <div class="classroom__details">{{ classroom.description }}</div>
+          <span class="classroom__topics">{{ classroom.topic }}</span>
         </div>
         <div class="classroom__conversation">
           <div class="threads scroll">
@@ -65,12 +64,12 @@
                     class="thread__authorInfo"
                   >
                     <div class="avatar avatar--small">
-                      <img src="{{message.author.avatar.url}}" />
+                      <img src="{{ message.author.avatar.url }}" />
                     </div>
-                    <span>@{{message.author.username}}</span>
+                    <span>@{{ message.author.username }}</span>
                   </a>
                   <span class="thread__date"
-                    >{{message.created | timesince}} ago</span
+                    >{{ message.created | timesince }} ago</span
                   >
                 </div>
                 {% if message.author == request.user %}
@@ -116,9 +115,9 @@
             </div>
             <p>
               {% if user.name %}
-              {{user.name}}
+              {{ user.name }}
               {% endif %}
-              <span>@{{user.username}}</span>
+              <span>@{{ user.username }}</span>
             </p>
           </a>
           {% endfor %}
@@ -126,7 +125,7 @@
       </div>
       <div class="conspects">
         <h3 class="students__top">
-          Conspects <span>({{classroom_conspects.count}} Sent)</span>
+          Conspects <span>({{ classroom_conspects.count }} Sent)</span>
         </h3>
         <div class="conspect__box scroll">
           <div class="conspect__conversation">
@@ -140,12 +139,12 @@
                       class="thread__authorInfo"
                     >
                       <div class="avatar avatar--small">
-                        <img src="{{conspect.author.avatar.url}}" />
+                        <img src="{{ conspect.author.avatar.url }}" />
                       </div>
-                      <span>@{{conspect.author.username}}</span>
+                      <span>@{{ conspect.author.username }}</span>
                     </a>
                     <span class="thread__date"
-                      >{{conspect.created | timesince}} ago</span
+                      >{{ conspect.created | timesince }} ago</span
                     >
                     {% if user == conspect.author %}
                     <div class="classroomListRoom__actions">
