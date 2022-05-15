@@ -66,3 +66,13 @@ function hamburgerMenu() {
     wrapper.classList.add("list-wrapper");
   }
 }
+
+// ===== Reveal Password =====
+function reveal() {
+  passwordField = document.getElementById('id_password1');
+  if(document.getElementById('show-password').checked) {
+    passwordField.type = 'text';
+  } else {
+    passwordField.type = 'password';
+  }
+}

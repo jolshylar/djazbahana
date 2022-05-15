@@ -6,7 +6,7 @@
 <main class="auth layout">
   {% if page == 'login' %}
   <div class="container">
-    <div class="layout__box">
+    <div class="layout__box" style="margin-top: 300px;">
       <div class="layout__boxHeader">
         <div class="layout__boxTitle">
           <h3>Login</h3>
@@ -23,8 +23,9 @@
           </div>
           <div class="form__group">
             <label for="password">Password</label>
+            <input type="checkbox" id="show-password" onclick="reveal()" />
             <input
-              id="password"
+              id="id_password1"
               name="password"
               type="password"
               placeholder="hope you use a powerful password"
@@ -49,7 +50,7 @@
   </div>
   {% else %}
   <div class="container">
-    <div class="layout__box">
+    <div class="layout__box" style="margin-top: 430px;">
       <div class="layout__boxHeader">
         <div class="layout__boxTitle">
           <h3>Register</h3>
@@ -67,6 +68,7 @@
             {{field}}
           </div>
           {% endfor %}
+          <input type="checkbox" id="show-password" onclick="reveal()" />
 
           <button class="btn btn--main" type="submit">
             <svg class="lock"  width="32" height="32" viewBox="0 0 32 32">
@@ -79,7 +81,7 @@
 
         <div class="auth__action">
           <p>Already signed up?</p>
-          <a href="{% url 'login' %}" class="btn btn--link">Sign Up</a>
+          <a href="{% url 'login' %}" class="btn btn--link">Log In</a>
         </div>
       </div>
     </div>
