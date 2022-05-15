@@ -20,22 +20,21 @@
 }
 
 .light {
-  --color-main: #de950d;
+  --color-main: #e5a121;
   --color-main-light: #e1f6fb;
   --color-header-footer: #ffffff;
   --color-components: #f0f8ff;
-  --color-dark-light: #b8b8b8;
+  --color-dark-light: #cbc9c9;
   --color-input: #c0c0c0;
   --color-light: #474747;
-  --color-gray: #000000;
+  --color-gray: #645c5c;
   --color-light-gray: #494c58;
   --color-bg: #f0f0f0;
   --color-dark: #fefefe;
   --color-header-links: #000000;
-  --color-status: #5dd693;
 }
 
-/*========== base styles ==========*/
+/*========== General Styling ==========*/
 
 * {
   font-family: 'Poppins', sans-serif;
