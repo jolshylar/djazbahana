@@ -6,20 +6,20 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('base', '0007_rename_user_message_author_conspect'),
+        ("base", "0007_rename_user_message_author_conspect"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='conspect',
-            options={'ordering': ['-created']},
+            name="conspect",
+            options={"ordering": ["-created"]},
         ),
         migrations.RemoveField(
-            model_name='conspect',
-            name='title',
+            model_name="conspect",
+            name="title",
         ),
         migrations.RemoveField(
-            model_name='conspect',
-            name='updated',
+            model_name="conspect",
+            name="updated",
         ),
     ]

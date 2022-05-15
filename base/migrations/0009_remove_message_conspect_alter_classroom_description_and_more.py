@@ -6,22 +6,22 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('base', '0008_alter_conspect_options_remove_conspect_title_and_more'),
+        ("base", "0008_alter_conspect_options_remove_conspect_title_and_more"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='message',
-            name='conspect',
+            model_name="message",
+            name="conspect",
         ),
         migrations.AlterField(
-            model_name='classroom',
-            name='description',
+            model_name="classroom",
+            name="description",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
         migrations.AlterField(
-            model_name='classroom',
-            name='name',
+            model_name="classroom",
+            name="name",
             field=models.CharField(max_length=100),
         ),
     ]

@@ -1,6 +1,6 @@
-from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import validate_email
+from django.db import models
 
 
 class User(AbstractUser):
@@ -10,8 +10,8 @@ class User(AbstractUser):
     avatar = models.ImageField(null=True, default="avatar.svg", upload_to="avatars/")
     balance = models.PositiveSmallIntegerField(default=300)
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username']
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = ["username"]
 
 
 class Topic(models.Model):
@@ -26,12 +26,12 @@ class Classroom(models.Model):
     topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=100, null=True, blank=True)
-    students = models.ManyToManyField(User, related_name='students', blank=True)
+    students = models.ManyToManyField(User, related_name="students", blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ['-updated', '-created']
+        ordering = ["-updated", "-created"]
 
     def __str__(self):
         return self.name
@@ -45,10 +45,10 @@ class Message(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ['-updated', '-created']
+        ordering = ["-updated", "-created"]
 
     def __str__(self):
-        return f'{self.body[0:32]} ...'
+        return f"{self.body[0:32]} ..."
 
 
 class Conspect(models.Model):
@@ -58,7 +58,7 @@ class Conspect(models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['-created']
+        ordering = ["-created"]
 
     def __str__(self):
-        return f'images/{self.file.name}'
+        return f"images/{self.file.name}"

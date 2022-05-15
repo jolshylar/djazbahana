@@ -7,13 +7,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('base', '0010_alter_user_bio'),
+        ("base", "0010_alter_user_bio"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='user',
-            name='email',
-            field=models.EmailField(max_length=254, null=True, unique=True, validators=[django.core.validators.EmailValidator()]),
+            model_name="user",
+            name="email",
+            field=models.EmailField(
+                max_length=254,
+                null=True,
+                unique=True,
+                validators=[django.core.validators.EmailValidator()],
+            ),
         ),
     ]

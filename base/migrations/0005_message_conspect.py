@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('base', '0004_alter_message_body'),
+        ("base", "0004_alter_message_body"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='message',
-            name='conspect',
-            field=models.FileField(null=True, upload_to='uploads/'),
+            model_name="message",
+            name="conspect",
+            field=models.FileField(null=True, upload_to="uploads/"),
         ),
     ]

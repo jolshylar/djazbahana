@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('base', '0009_remove_message_conspect_alter_classroom_description_and_more'),
+        ("base", "0009_remove_message_conspect_alter_classroom_description_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='user',
-            name='bio',
+            model_name="user",
+            name="bio",
             field=models.TextField(max_length=200, null=True),
         ),
     ]
