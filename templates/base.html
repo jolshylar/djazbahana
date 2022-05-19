@@ -13,11 +13,12 @@
     {% include 'navbar.html' %}
 
     {% if messages %}
-    <ul class="messages">
         {% for message in messages %}
-        <li>{{ message }}</li>
+        <div class="error-message" id="id_box">
+            <img src="{% static 'images/oops.png' %}" alt="">
+            <span>{{ message }}</span>
+        </div>
         {% endfor %}
-    </ul>
     {% endif %}
 
     {% block content %}

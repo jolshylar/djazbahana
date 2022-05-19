@@ -19,3 +19,24 @@
   margin-top: 3rem;
   text-align: center;
 }
+
+.password-field {
+  display: flex;
+  outline: 1px #71c6dd;
+  border-radius: 3px 0 0 3px;
+}
+
+#show-password {
+  width: 10%;
+  border: none;
+  border-radius: 0 3px 3px 0;
+}
+
+#show-password {
+  border: 1px solid var(--color-dark-light);
+  border-left: none;
+}
+
+.btn--link {
+  margin-left: 0;
+}

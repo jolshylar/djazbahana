@@ -17,6 +17,8 @@
   /* Theme toggle */
   --toggle-light: hsl(230, 22%, 74%);
   --toggle-dark: linear gradient hsl(210, 78%, 56%) to hsl(146, 68%, 55%);
+  /* Displaying error messages */
+  --color-error-message: #5454e0;
 }
 
 .light {
@@ -32,6 +34,8 @@
   --color-bg: #f0f0f0;
   --color-dark: #fefefe;
   --color-header-links: #000000;
+  /* Displaying error messages */
+  --color-error-message: #ffcc14;
 }
 
 /*========== General Styling ==========*/
@@ -852,4 +856,32 @@ input:checked + .slider:before {
 
 input:checked + .round::before {
   background-color: hsl(230, 17%, 14%);
+}
+
+/* Displaying Error Messages */
+.error-message {
+  /* color: var(--color-dark); */
+  color: var(--color-light);
+  background-color: var(--color-error-message);
+  position: fixed;
+  top: 0;
+  left: 36%;
+  padding: 30px 5% 20px;
+  z-index: 999;
+  border-radius: 0 0 10px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.error-message img {
+  height: 60px;
+  width: 50%;
+  margin-left: 25%; 
+  margin-bottom: 10px;
+}
+
+.click-box {
+  top: -400px;
+  transition: 1.5s;
 }

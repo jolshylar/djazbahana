@@ -13,8 +13,7 @@
         </div>
       </div>
       <div class="layout__body">
-        <h2 class="auth__tagline">Find your study partner</h2>
-
+        <h2 class="auth__tagline">Prepare in a single environment</h2>
         <form class="form" action="" method="post">
           {% csrf_token %}
           <div class="form__group form__group">
@@ -23,13 +22,15 @@
           </div>
           <div class="form__group">
             <label for="password">Password</label>
-            <input
-            id="id_password1"
-            name="password"
-            type="password"
-            placeholder="hope you use a powerful password"
-            />
-            <input type="checkbox" id="show-password" onclick="reveal()" />
+            <div class="password-field">
+              <input
+                id="id_password1"
+                name="password"
+                type="password"
+                placeholder="hope you use a powerful password"
+              />
+              <input id="show-password" type="button" value="🙈" onclick="reveal()" />
+            </div>
           </div>
 
           <button class="btn btn--main" type="submit">
@@ -68,7 +69,7 @@
             {{field}}
           </div>
           {% endfor %}
-          <input type="checkbox" id="show-password" onclick="reveal()" />
+          <!-- <input id="show-password" type="button" value="🙈" onclick="reveal()" /> -->
 
           <button class="btn btn--main" type="submit">
             <svg class="lock"  width="32" height="32" viewBox="0 0 32 32">

@@ -68,11 +68,25 @@ function hamburgerMenu() {
 }
 
 // ===== Reveal Password =====
+let showCounter = 3;
 function reveal() {
-  passwordField = document.getElementById('id_password1');
-  if(document.getElementById('show-password').checked) {
+  let passwordField = document.getElementById('id_password1');
+  let showPassword = document.getElementById('show-password');
+  if(showCounter % 2 == 1) {
+    showCounter++;
+    showPassword.value = '🙉';
     passwordField.type = 'text';
   } else {
+    showCounter++;
+    showPassword.value = '🙈';
     passwordField.type = 'password';
   }
 }
+
+// ======= MessageBox ========
+
+let boxMessage = document.getElementById('id_box');
+
+boxMessage.addEventListener("click", () => {
+boxMessage.classList.toggle("click-box");
+});
