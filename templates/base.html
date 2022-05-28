@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load static %}
+{% load static i18n %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon" />
     <link rel="stylesheet" href="{% static 'styles/style.css' %}" />
-    <title>JazbaHana - Share Conspects with Students ATW</title>
+    <title>{% translate "JazbaHana - Share Conspects with Students ATW" %}</title>
 </head>
 <body class="dark">
     {% include 'navbar.html' %}
