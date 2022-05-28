@@ -24,3 +24,6 @@
 - [Imanali Koksal](https://instagram.com/imanalikoksal) - Game Design
 - [Daryn Zhantileu](https://instagram.com/darynzhantileu) - Graphic Design
 - [Altynai Zheniskyzy](https://instagram.com/sheisgoldenmoon) - SMM Management
+- [Adilet Kabylet](https://instagram.com/kabyletad) - PR Management
+- [Dulat Tursynbai](https://instagram.com/silvdul_) - Graphic Design
+- [Yerassyl Abylkassym](https://instagram.com/eraofcoding) - Mobile Development
