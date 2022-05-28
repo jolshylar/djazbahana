@@ -1,4 +1,4 @@
-{% load static %}
+{% load static i18n %}
 
 <link rel="stylesheet" href="{% static 'styles/navbar.css' %}" />
 <header class="header header--loggedIn">
@@ -12,9 +12,21 @@
           <title>search</title>
           <path d="M32 30.586l-10.845-10.845c1.771-2.092 2.845-4.791 2.845-7.741 0-6.617-5.383-12-12-12s-12 5.383-12 12c0 6.617 5.383 12 12 12 2.949 0 5.649-1.074 7.741-2.845l10.845 10.845 1.414-1.414zM12 22c-5.514 0-10-4.486-10-10s4.486-10 10-10c5.514 0 10 4.486 10 10s-4.486 10-10 10z"></path>
         </svg>
-        <input name="q" placeholder="Search Conspects..." />
+        <input name="q" placeholder="{% translate 'Search Conspects...' %}" />
       </label>
     </form>
+
+    <div class="language">
+      <p>🌐</p>
+      <div class="language-content">
+        {% get_available_languages as languages %}
+        {% for lang_code, lang_name in languages %}
+        {% language lang_code %}
+        <a href="{% url 'home' %}">{{ lang_name }}</a>
+        {% endlanguage %}
+        {% endfor %}
+      </div>
+    </div>
 
     <div class="switch-box">
      <label class="switch">
@@ -24,28 +36,27 @@
     </div>
 
     <nav id="bar">
-          <!-- Hamburger menu -->
-          <div id="menu" onclick="hamburgerMenu()">
-            <div class="line line1"></div>
-            <div class="line line2"></div>
-            <div class="line line3"></div>
-          </div>
-          <!-- A bunch of links -->
-        <div id="list-wrapper" class="list-wrapper">
-          <ul class="list">
-            <li class="list-link"><a href="{% url 'home'%}">Home</a></li>
-            <li class="list-link"><a href="{% url 'about' %}">About</a></li>
-            <li class="list-link"><a href="{% url 'donate' %}">Donate</a></li>
-              {% if user.is_authenticated %}
-            <li class="list-link"><a href="{% url 'user-profile' user.username %}">Profile</a></li>
-            <li class="list-link"><a href="{% url 'logout' %}">Logout</a></li>
-              {% else %}
-              <!-- User is not authenticated -->
-            <li class="list-link"><a href="{% url 'login' %}">Login</a></li>
-              {% endif %}
-          </ul>
-        </div>
-    </nav> 
-   
-</div>
+      <!-- Hamburger menu -->
+      <div id="menu" onclick="hamburgerMenu()">
+        <div class="line line1"></div>
+        <div class="line line2"></div>
+        <div class="line line3"></div>
+      </div>
+      <!-- A bunch of links -->
+      <div id="list-wrapper" class="list-wrapper">
+        <ul class="list">
+          <li class="list-link"><a href="{% url 'home'%}">{% translate "Home" %}</a></li>
+          <li class="list-link"><a href="{% url 'about' %}">{% translate "About" %}</a></li>
+          <li class="list-link"><a href="{% url 'donate' %}">{% translate "Donate" %}</a></li>
+          {% if user.is_authenticated %}
+          <li class="list-link"><a href="{% url 'user-profile' user.username %}">{% translate "Profile" %}</a></li>
+          <li class="list-link"><a href="{% url 'logout' %}">{% translate "Logout" %}</a></li>
+          {% else %}
+          <!-- User is not authenticated -->
+          <li class="list-link"><a href="{% url 'login' %}">{% translate "Login" %}</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+  </div>
 </header>

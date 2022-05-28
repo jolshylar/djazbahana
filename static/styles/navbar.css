@@ -5,7 +5,7 @@
   right: 0.5rem;
   background: var(--color-dark-light);
   border-radius: 5px;
-  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 1px 3px 1px var(--color-header-footer);
   overflow: hidden;
   display: none;
 }
@@ -40,3 +40,28 @@
   max-height: 12px;
 }
 
+/* Language Dropdown Menu */
+
+.language {
+  position: relative;
+  display: inline-block;
+}
+
+.language-content {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  padding: 12px 16px;
+  z-index: 1;
+  background-color: var(--color-dark);
+}
+
+.language:hover .language-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.language p {
+  margin-top: 30%;
+  font-size: 25px;
+}
