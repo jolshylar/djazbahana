@@ -12,6 +12,7 @@ from django.views import View
 from django.views.generic.base import RedirectView, TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
+from django.utils.translation import gettext as _
 
 from .forms import ClassroomForm, ConspectForm, CustomUserCreationForm, UserForm
 from .models import Classroom, Conspect, Message, Topic, User
@@ -81,7 +82,7 @@ class RegisterPageView(View):
             login(request, user)
             return redirect("home")
         else:
-            messages.error(request, "An error occurred during registration")
+            messages.error(request, _("An error occurred during registration"))
 
 
 class LoginPageView(View):
@@ -99,14 +100,14 @@ class LoginPageView(View):
         try:
             user = User.objects.get(email=email)
         except User.DoesNotExist:
-            messages.error(request, "User does not exist")
+            messages.error(request, _("User does not exist"))
 
         user = authenticate(request, email=email, password=password)
         if user is not None:
             login(request, user)
             return redirect("home")
         else:
-            messages.error(request, "Email or password entered wrong")
+            messages.error(request, _("Email or password entered wrong"))
             return redirect("login")
 
 
@@ -213,7 +214,7 @@ def update_classroom(request, pk):
     topics = Topic.objects.all()
 
     if request.user != classroom.host:
-        return HttpResponse("You are not allowed here!")
+        return HttpResponse(_("You are not allowed here!"))
 
     if request.method == "POST":
         topic_name = request.POST.get("topic")
@@ -244,10 +245,10 @@ def confirm_payment(request, pk):
         conspect.author.balance += 100
         user.save()
         conspect.author.save()
-        messages.info(request, "Purchase has been successfully done.")
+        messages.info(request, _("Purchase has been successfully done."))
         return open_conspect(conspect)
 
-    context = {"state": "confirm", "obj": conspect}
+    context = {"obj": conspect}
     return render(request, "base/confirm.html", context)
 
 
@@ -262,7 +263,7 @@ def delete_classroom(request, pk):
         classroom.delete()
         return redirect("home")
 
-    context = {"state": "confirm", "obj": classroom}
+    context = {"obj": classroom}
     return render(request, "base/confirm.html", context)
 
 
@@ -277,7 +278,7 @@ def delete_conspect(request, pk):
         conspect.delete()
         return redirect("classroom", conspect.classroom.id)
 
-    context = {"state": "confirm", "obj": conspect}
+    context = {"obj": conspect}
     return render(request, "base/confirm.html", context)
 
 
@@ -292,7 +293,7 @@ def delete_message(request, pk):
         message.delete()
         return redirect("classroom", message.classroom.id)
 
-    context = {"state": "confirm", "obj": message}
+    context = {"obj": message}
     return render(request, "base/confirm.html", context)
 
 

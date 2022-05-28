@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'styles/activities.css' %}" />
@@ -16,11 +16,11 @@
               ></path>
             </svg>
           </a>
-          <h3>Recent Activities</h3>
+          <h3>{% translate "Recent Activities" %}</h3>
         </div>
       </div>
 
-      <div class="activities-page layout__body">
+      <div class="activities-page layout__body" style="margin-right: 0">
         {% for message in classroom_messages %}
         <div class="activities__box">
           <div class="activities__boxHeader classroomListRoom__header">
@@ -33,7 +33,7 @@
               </div>
               <p>
                 @{{message.author.username}}
-                <span>{{message.created | timesince}} ago</span>
+                <span>{{message.created | timesince}} {% translate ago %}</span>
               </p>
             </a>
 
@@ -53,10 +53,7 @@
 
           <div class="activities__boxContent">
             <p>
-              replied to post “<a
-                href="{% url 'classroom' message.classroom.id %}"
-                >{{message.classroom}}</a
-              >”
+              {% translate "replied to post" %} “<a href="{% url 'classroom' message.classroom.id %}">{{message.classroom}}</a>”
             </p>
             <div class="activities__boxRoomContent">{{message}}</div>
           </div>

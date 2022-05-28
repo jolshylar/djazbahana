@@ -1,9 +1,9 @@
-{% load static %}
+{% load static i18n %}
 
 <link rel="stylesheet" href="{% static 'styles/activities.css' %}" />
 <div class="activities">
     <div class="activities__header">
-      <h2>Recent Activities</h2>
+      <h2>{% translate "Recent Activities" %}</h2>
     </div>
 
     <div class="activity__body">
@@ -15,15 +15,15 @@
               <img src="{{message.author.avatar.url}}" />
             </div>
             <p>
-              @{{message.author.username}}
-              <span>{{message.created | timesince}} ago</span>
+              @{{ message.author.username }}
+              <span>{{ message.created | timesince }} {% translate "ago" %}</span>
             </p>
           </a>
         </div>
         <div class="activities__boxContent">
-          <p>replied to post “<a href="{% url 'classroom' message.classroom.id %}">{{message.classroom}}</a>”</p>
+          <p>{% translate "replied to post" %} “<a href="{% url 'classroom' message.classroom.id %}">{{ message.classroom }}</a>”</p>
           <div class="activities__boxRoomContent">
-            {{message}}
+            {{ message }}
           </div>
         </div>
       </div>
@@ -31,7 +31,7 @@
     </div>
 
     <a class="btn btn--link" href="{% url 'activities' %}">
-      More
+      {% translate "More" %}
       <svg class="chevron-down" width="16" height="16" viewBox="0 0 32 32">
         <title>chevron-down</title>
         <path d="M16 21l-13-13h-3l16 16 16-16h-3l-13 13z"></path>

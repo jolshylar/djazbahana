@@ -1,21 +1,21 @@
-{% load static %}
+{% load static i18n %}
 
 {% for classroom in page_obj %}
 <div class="classroomListRoom">
   <div class="classroomListRoom__header">
     <a href="{% url 'user-profile' classroom.host.username %}" class="classroomListRoom__author">
       <div class="avatar avatar--small">
-        <img src="{{classroom.host.avatar.url}}" />
+        <img src="{{ classroom.host.avatar.url }}" />
       </div>
-      <span>@{{classroom.host.username}}</span>
+      <span>@{{ classroom.host.username }}</span>
     </a>
     <div class="classroomListRoom__actions">
-      <span>{{classroom.created | timesince}} ago</span>
+      <span>{{ classroom.created | timesince }} {% translate "ago" %}</span>
     </div>
   </div>
   <div class="classroomListRoom__content">
-    <a href="{% url 'classroom' classroom.id %}">{{classroom.name}}</a>
-    <p class="description">{{classroom.description}}</p>
+    <a href="{% url 'classroom' classroom.id %}">{{ classroom.name }}</a>
+    <p class="description">{{ classroom.description }}</p>
   </div>
   <div class="classroomListRoom__meta">
     <a href="{% url 'classroom' classroom.id %}" class="classroomListRoom__joined">
@@ -26,9 +26,9 @@
         <path d="M19.502 4.047c0.166-0.017 0.33-0.047 0.498-0.047 2.757 0 5 2.243 5 5s-2.243 5-5 5c-0.168 0-0.332-0.030-0.498-0.047-0.424 0.641-0.944 1.204-1.513 1.716 0.651 0.201 1.323 0.331 2.011 0.331 3.859 0 7-3.141 7-7s-3.141-7-7-7c-0.688 0-1.36 0.131-2.011 0.331 0.57 0.512 1.089 1.075 1.513 1.716z"></path>
         <path d="M12 16c3.859 0 7-3.141 7-7s-3.141-7-7-7c-3.859 0-7 3.141-7 7s3.141 7 7 7zM12 4c2.757 0 5 2.243 5 5s-2.243 5-5 5-5-2.243-5-5c0-2.757 2.243-5 5-5z"></path>
       </svg>
-      {{classroom.students.all.count}} Joined
+      {{ classroom.students.all.count }} {% translate "Joined" %}
     </a>
-    <p class="classroomListRoom__topic">{{classroom.topic.name}}</p>
+    <p class="classroomListRoom__topic">{{ classroom.topic.name }}</p>
   </div>
 
 </div>

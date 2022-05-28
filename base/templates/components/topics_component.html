@@ -1,25 +1,25 @@
-{% load static %}
+{% load static i18n %}
 
 <div class="topics">
   <div class="topics__header">
-    <h2>Browse Topics</h2>
+    <h2>{% translate "Browse Topics" %}</h2>
   </div>
   <ul class="topics__list">
     <li>
       <a href="{% url 'home' %}" class="active"
-        >All <span>{{topics.count}}</span></a
+        >{% translate "All" %} <span>{{ topics.count }}</span></a
       >
     </li>
     {% for topic in topics %}
     <li>
-      <a href="{% url 'home' %}?q={{topic.name}}"
-        >{{topic.name}}<span>{{topic.classroom_set.all.count}}</span></a
+      <a href="{% url 'home' %}?q={{ topic.name }}"
+        >{{ topic.name }}<span>{{ topic.classroom_set.all.count }}</span></a
       >
     </li>
     {% endfor %}
   </ul>
-  <a class="btn btn--link" href="{% url 'topics' %}">
-    More
+  <a class="btn btn--link" href="{% url 'topics' %}" style="margin-left: 0">
+    {% translate "More" %}
     <svg class="chevron-down" width="16" height="16" viewBox="0 0 32 32">
       <title>chevron-down</title>
       <path d="M16 21l-13-13h-3l16 16 16-16h-3l-13 13z"></path>

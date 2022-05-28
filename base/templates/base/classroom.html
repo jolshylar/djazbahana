@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
-{% load base_extras %}
-{% load static %}
+{% load static base_extras i18n %}
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'styles/classroom.css' %}" />
@@ -15,7 +14,7 @@
               <path d="M13.723 2.286l-13.723 13.714 13.719 13.714 1.616-1.611-10.96-10.96h27.625v-2.286h-27.625l10.965-10.965-1.616-1.607z"></path>
             </svg>
           </a>
-          <h3>Classroom</h3>
+          <h3>{% translate "Classroom" %}</h3>
         </div>
 
         {% if classroom.host == request.user %}
@@ -36,23 +35,23 @@
       <div class="classroom__box scroll">
         <div class="classroom__header scroll">
           <div class="classroom__info">
-            <h3>{{classroom.name}}</h3>
-            <span>{{classroom.created | timesince}} ago</span>
+            <h3>{{ classroom.name }}</h3>
+            <span>{{ classroom.created | timesince }} {% translate "ago" %}</span>
           </div>
           <div class="classroom__hosted">
-            <p>Hosted By</p>
+            <p>{% translate "Hosted By" %}s</p>
             <a
               href="{% url 'user-profile' classroom.host.username %}"
               class="classroom__author"
             >
               <div class="avatar avatar--small">
-                <img src="{{classroom.host.avatar.url}}" />
+                <img src="{{ classroom.host.avatar.url}}" />
               </div>
-              <span>@{{classroom.host.username}}</span>
+              <span>@{{ classroom.host.username }}</span>
             </a>
           </div>
-          <div class="classroom__details">{{classroom.description}}</div>
-          <span class="classroom__topics">{{classroom.topic}}</span>
+          <div class="classroom__details">{{ classroom.description }}</div>
+          <span class="classroom__topics">{{ classroom.topic }}</span>
         </div>
         <div class="classroom__conversation">
           <div class="threads scroll">
@@ -67,10 +66,10 @@
                     <div class="avatar avatar--small">
                       <img src="{{message.author.avatar.url}}" />
                     </div>
-                    <span>@{{message.author.username}}</span>
+                    <span>@{{ message.author.username }}</span>
                   </a>
                   <span class="thread__date"
-                    >{{message.created | timesince}} ago</span
+                    >{{ message.created | timesince }} {% translate "ago" %}</span
                   >
                 </div>
                 {% if message.author == request.user %}
@@ -97,7 +96,7 @@
         <form action="" method="post">
           {% csrf_token %}
           <input name="body" placeholder="Write your message..." />
-          <button type="submit" class="btn btn--main">Send</button>
+          <button type="submit" class="btn btn--main">{% translate "Send" %}</button>
         </form>
       </div>
       {% endif %}
@@ -106,19 +105,19 @@
     <div class="upload__students">
       <div class="students">
         <h3 class="students__top">
-          Students <span>({{students.count}} Joined)</span>
+          {% translate "Students" %} <span>({{ students.count }} {% translate "Joined" %})</span>
         </h3>
         <div class="students__list scroll">
           {% for user in students %}
           <a href="{% url 'user-profile' user.username %}" class="student">
             <div class="avatar avatar--medium">
-              <img src="{{user.avatar.url}}" />
+              <img src="{{ user.avatar.url }}" />
             </div>
             <p>
               {% if user.name %}
-              {{user.name}}
+              {{ user.name }}
               {% endif %}
-              <span>@{{user.username}}</span>
+              <span>@{{ user.username }}</span>
             </p>
           </a>
           {% endfor %}
@@ -126,7 +125,7 @@
       </div>
       <div class="conspects">
         <h3 class="students__top">
-          Conspects <span>({{classroom_conspects.count}} Sent)</span>
+          {% translate "Conspects" %} <span>({{ classroom_conspects.count }} {% translate "Sent" %})</span>
         </h3>
         <div class="conspect__box scroll">
           <div class="conspect__conversation">
@@ -140,12 +139,12 @@
                       class="thread__authorInfo"
                     >
                       <div class="avatar avatar--small">
-                        <img src="{{conspect.author.avatar.url}}" />
+                        <img src="{{ conspect.author.avatar.url }}" />
                       </div>
-                      <span>@{{conspect.author.username}}</span>
+                      <span>@{{ conspect.author.username }}</span>
                     </a>
                     <span class="thread__date"
-                      >{{conspect.created | timesince}} ago</span
+                      >{{ conspect.created | timesince }} {% translate "ago" %}</span
                     >
                     {% if user == conspect.author %}
                     <div class="classroomListRoom__actions">
@@ -170,7 +169,7 @@
 
         <div class="conspect__upload">
           <button class="btn btn--main" type="submit">
-            <a style="color: #000;" href="{% url 'create-conspect' classroom.id %}">Upload</a>
+            <a style="color: #000;" href="{% url 'create-conspect' classroom.id %}">{% translate "Upload" %}</a>
           </button>
         </div>
       </div>

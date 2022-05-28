@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
-{% load base_extras %}
+{% load static base_extras i18n %}
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'styles/profile.css' %}" />
@@ -12,35 +11,35 @@
       <div class="profile">
         <div class="profile__avatar">
           <div class="avatar avatar--large active">
-            <img src="{{user.avatar.url}}" />
+            <img src="{{ user.avatar.url }}" />
           </div>
         </div>
         <div class="profile__info">
           {% if user.name %}
           <h3>{{ user.name }}</h3>
           {% else %}
-          <h3>No Name</h3>
+          <h3>{% translate "No Name" %}</h3>
           {% endif %}
-          <p>@{{user.username}}</p>
+          <p>@{{ user.username }}</p>
           {% if request.user == user %}
-          <a href="{% url 'update-user' %}" class="btn btn--main btn--pill">Edit Profile</a>
-          <a href="#" class="btn btn--main btn--pill">Raise Balance</a>
+          <a href="{% url 'update-user' %}" class="btn btn--main btn--pill">{% translate "Edit Profile" %}</a>
+          <a href="#" class="btn btn--main btn--pill">{% translate "Raise Balance" %}</a>
           {% endif %}
         </div>
         <div class="profile__about">
-          <h3>About</h3>
+          <h3>Bio</h3>
           {% if user.bio %}
           <p>{{ user.bio | convert_markdown | safe }}</p>
           {% else %}
-          <p>No bio yet 💀</p>
+          <p>{% translate "No bio yet 💀" %}</p>
           {% endif %}
 
           <hr />
 
           {% if request.user == user %}
-          <h3>Balance</h3>
+          <h3>{% translate "Balance" %}</h3>
           <div class="layout__body__balance">
-            <h1 class="jpcoin_balance">Current balance: {{user.balance}}</h1>
+            <h1 class="jpcoin_balance">{% translate "Current balance:" %} {{ user.balance }}</h1>
             <img class="header__jpcoin" src="{% static 'images/jazbapoint.png' %}"/>
           </div>
           {% endif %}
@@ -49,7 +48,7 @@
 
       <div class="classroomList__header">
         <div>
-          <h2>Classrooms Hosted by @{{user.username}}</a>
+          <h2>@{{ user.username }}{% translate "'s Classrooms" %}</a>
           </h2>
         </div>
       </div>

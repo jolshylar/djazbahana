@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
 
 {% block content %}
 <main class="create-classroom layout">
   <div class="container">
-    <div class="layout__box">
+    <div class="layout__box" style="margin-top: 250px">
       <div class="layout__boxHeader">
         <div class="layout__boxTitle">
           <a href="{% url 'home' %}">
@@ -13,7 +13,7 @@
               <path d="M13.723 2.286l-13.723 13.714 13.719 13.714 1.616-1.611-10.96-10.96h27.625v-2.286h-27.625l10.965-10.965-1.616-1.607z"></path>
             </svg>
           </a>
-          <h3>Create/Update Classroom</h3>
+          <h3>{% translate "Create/Update Classroom" %}</h3>
         </div>
       </div>
       <div class="layout__body">
@@ -21,30 +21,30 @@
           {% csrf_token %}
 
           <div class="form__group">
-            <label for="classroom_topic">Enter a Topic</label>
+            <label for="classroom_topic">{% translate "Enter a Topic" %}</label>
             <input required type="text" value="{{classroom.topic.name}}" name="topic" list="topic-list" />
             <datalist id="topic-list">
               <select id="classroom_topic">
                 {% for topic in topics %}
-                <option value="{{topic.name}}">{{topic.name}}</option>
+                <option value="{{topic.name}}">{{ topic.name }}</option>
                 {% endfor %}
               </select>
             </datalist>
           </div>
 
           <div class="form__group">
-            <label for="classroom_name">Classroom Name</label>
-            {{form.name}}
+            <label for="classroom_name">{% translate "Classroom Name" %}</label>
+            {{ form.name }}
           </div>
 
           <div class="form__group">
-            <label for="classroom_description">Classroom Description</label>
-            {{form.description}}
+            <label for="classroom_description">{% translate "Classroom Description" %}</label>
+            {{ form.description }}
           </div>
 
           <div class="form__action">
-            <a class="btn btn--dark" href="{% url 'home' %}">Cancel</a>
-            <button class="btn btn--main" type="submit">Save</button>
+            <a class="btn btn--dark" href="{% url 'home' %}">{% translate "Cancel" %}</a>
+            <button class="btn btn--main" type="submit">{% translate "Save" %}</button>
           </div>
         </form>
       </div>
