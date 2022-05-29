@@ -421,7 +421,6 @@
 }
 
 @media screen and (max-width: 616px) {
-
   .classroom__box {
     padding-left: 2.5rem;
     padding-right: 2rem;
@@ -459,5 +458,5 @@
 
   .conspect__upload .btn--main {
     margin-left: 40%;
-}
+  }
 }

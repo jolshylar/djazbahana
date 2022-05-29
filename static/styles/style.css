@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 :root {
   --color-main: #71c6dd;
@@ -41,7 +41,7 @@
 /*========== General Styling ==========*/
 
 * {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -123,7 +123,6 @@ Components
 .btn--main {
   background-color: var(--color-main);
   color: var(--color-dark);
-   
 }
 
 .btn:hover {
@@ -232,8 +231,9 @@ Components
   background-color: var(--color-header-footer);
 }
 
-.switch-box, #bar {
- padding-top: 13.6px;
+.switch-box,
+#bar {
+  padding-top: 13.6px;
 }
 
 .header > .container {
@@ -393,7 +393,6 @@ Media
 }
 
 @media screen and (max-width: 480px) {
-
   .header__search {
     display: none;
   }
@@ -538,7 +537,6 @@ Media
 .layout__body {
   margin: 3rem;
 }
-
 
 /*==============================
 =>  Topics
@@ -870,7 +868,7 @@ input:checked + .round::before {
 .error-message img {
   height: 60px;
   width: 50%;
-  margin-left: 25%; 
+  margin-left: 25%;
   margin-bottom: 10px;
 }
 
@@ -895,7 +893,6 @@ input:checked + .round::before {
 ::-webkit-scrollbar-thumb {
   background-color: var(--color-light-gray);
   border-radius: 16px;
-
 }
 
 /* set button(top and bottom of the scrollbar) */
