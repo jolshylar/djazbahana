@@ -1,42 +1,41 @@
-/* ===== About Page ===== */
-
-.about-page {
+.markdown-page {
   font-size: 2rem;
   margin: 5%;
   box-shadow: 1px 1px 6px 3px rgba(0, 0, 0, 0.1);
-  background-color: var(--color-components); 
+  background-color: var(--color-components);
   border-radius: 10px;
 }
 
-.about-page h1 {
+.markdown-page h1 {
   text-transform: uppercase;
   padding-top: 2rem;
   text-align: center;
 }
 
-.about-page ul {
+.markdown-page ul {
   list-style-position: inside;
   list-style-type: none;
 }
 
-.about-page li {
+.markdown-page li,
+.markdown-page p {
   margin-left: 20%;
   margin-right: 20%;
   text-align: center;
 }
 
 @media screen and (max-width: 480px) {
-  .about-page {
+  .markdown-page {
     font-size: 1.5rem;
     margin: 5% 0;
   }
 
-  .about-page h1 {
-    font-size: 2srem;
+  .markdown-page h1 {
+    font-size: 2rem;
     padding-top: 1rem;
   }
 
-  .about-page li {
+  .markdown-page li {
     margin-left: 0;
     margin-right: 0;
   }
