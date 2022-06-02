@@ -8,11 +8,11 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import FileResponse, HttpResponse
 from django.shortcuts import redirect, render
+from django.utils.translation import gettext as _
 from django.views import View
 from django.views.generic.base import RedirectView, TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
-from django.utils.translation import gettext as _
 
 from .forms import ClassroomForm, ConspectForm, CustomUserCreationForm, UserForm
 from .models import Classroom, Conspect, Message, Topic, User
@@ -28,10 +28,10 @@ class HomeView(ListView):
         q = self.request.GET.get("q") if self.request.GET.get("q") is not None else ""
         user = User.objects.filter(username__icontains=q).first()
         return Classroom.objects.filter(
-            Q(host=user) |
-            Q(topic__name__icontains=q) |
-            Q(name__icontains=q) |
-            Q(description__icontains=q)
+            Q(host=user)
+            | Q(topic__name__icontains=q)
+            | Q(name__icontains=q)
+            | Q(description__icontains=q)
         )
 
     def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
