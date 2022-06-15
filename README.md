@@ -18,6 +18,16 @@ In `requirements.txt` you can notice essential packages the project needs to run
 
     pip install -r requirements.txt
 
+### Setting Environment Variables
+Create `.env` file in the root directory
+
+    SECRET_KEY=SOMETHING_REALLY_SECRET
+    DATABASE_URL=sqlite:///db.sqlite3
+
+Paste those in the file. Though you can leave as it is, we recommend you to change `SECRET_KEY` value.
+
+Generate one using `python manage.py generate_secret_key`
+
 ### Almost done!
 Now you need to apply database migrations (this project uses `SQLite3`)
 

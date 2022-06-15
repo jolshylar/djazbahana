@@ -54,6 +54,7 @@ class Message(models.Model):
 class Conspect(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
+    description = models.CharField(max_length=200, null=True)
     file = models.FileField(upload_to="uploads/")
     created = models.DateTimeField(auto_now_add=True)
 
@@ -61,4 +62,7 @@ class Conspect(models.Model):
         ordering = ["-created"]
 
     def __str__(self):
+        if self.description:
+            file_extension = self.file.name.split('.')[-1]
+            return f"[.{file_extension}] {self.description}"
         return f"images/{self.file.name}"

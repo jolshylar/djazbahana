@@ -14,7 +14,8 @@ from django.views.generic.base import RedirectView, TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
-from .forms import ClassroomForm, ConspectForm, CustomUserCreationForm, UserForm
+from .forms import (ClassroomForm, ConspectForm, CustomUserCreationForm,
+                    UserForm)
 from .models import Classroom, Conspect, Message, Topic, User
 
 

@@ -26,4 +26,4 @@ class ClassroomForm(ModelForm):
 class ConspectForm(ModelForm):
     class Meta:
         model = Conspect
-        fields = ["file"]
+        fields = ["description", "file"]
