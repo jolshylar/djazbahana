@@ -9,37 +9,37 @@ from .base import *
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'jazbahana.herokuapp.com',
+    "jazbahana.herokuapp.com",
 ]
 
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
 LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format': "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
-            'datefmt': "%d/%b/%Y %H:%M:%S",
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "verbose": {
+            "format": "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            "datefmt": "%d/%b/%Y %H:%M:%S",
         },
-        'simple': {
-            'format': '%(levelname)s %(message)s',
-        },
-    },
-    'handlers': {
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
+        "simple": {
+            "format": "%(levelname)s %(message)s",
         },
     },
-    'loggers': {
-        'MYAPP': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
+    "handlers": {
+        "console": {
+            "level": "DEBUG",
+            "class": "logging.StreamHandler",
+        },
+    },
+    "loggers": {
+        "MYAPP": {
+            "handlers": ["console"],
+            "level": "DEBUG",
         },
     },
 }
 
 # Heroku Settings
 django_on_heroku.settings(locals(), staticfiles=False)
-del DATABASES['default']['OPTIONS']['sslmode']
+del DATABASES["default"]["OPTIONS"]["sslmode"]

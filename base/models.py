@@ -63,6 +63,6 @@ class Conspect(models.Model):
 
     def __str__(self):
         if self.description:
-            file_extension = self.file.name.split('.')[-1]
+            file_extension = self.file.name.split(".")[-1]
             return f"[.{file_extension}] {self.description}"
         return f"images/{self.file.name}"
