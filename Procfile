@@ -1,1 +1,1 @@
-web: python manage.py migrate && gunicorn jazbahana.wsgi
+web: gunicorn jazbahana.wsgi

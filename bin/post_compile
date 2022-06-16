@@ -1,0 +1,7 @@
+# !/usr/bin/env bash
+
+echo "=> Performing database migrations..."
+python manage.py migrate
+
+echo "=> Compiling translation messages..."
+python manage.py compilemessages
