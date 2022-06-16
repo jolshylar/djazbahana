@@ -6,7 +6,7 @@ from base.models import Classroom, Topic, User
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ["url", "username", "email", "bio", "avatar"]
+        fields = ["url", "username", "bio", "avatar"]
 
 
 class TopicSerializer(serializers.HyperlinkedModelSerializer):
