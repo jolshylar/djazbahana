@@ -4,9 +4,9 @@ from django.db import models
 
 
 class User(AbstractUser):
-    name = models.CharField(max_length=200, null=True)
+    name = models.CharField(max_length=16, null=True)
     email = models.EmailField(unique=True, null=True, validators=[validate_email])
-    bio = models.TextField(max_length=200, null=True)
+    bio = models.TextField(max_length=128, null=True)
     avatar = models.ImageField(null=True, default="avatar.svg", upload_to="avatars/")
     balance = models.PositiveSmallIntegerField(default=300)
 
@@ -15,7 +15,7 @@ class User(AbstractUser):
 
 
 class Topic(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=16)
 
     def __str__(self):
         return self.name
@@ -24,8 +24,8 @@ class Topic(models.Model):
 class Classroom(models.Model):
     host = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True)
-    name = models.CharField(max_length=100)
-    description = models.CharField(max_length=100, null=True, blank=True)
+    name = models.CharField(max_length=64)
+    description = models.CharField(max_length=128, null=True, blank=True)
     students = models.ManyToManyField(User, related_name="students", blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -54,7 +54,7 @@ class Message(models.Model):
 class Conspect(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
-    description = models.CharField(max_length=200, null=True)
+    description = models.CharField(max_length=128, null=True)
     file = models.FileField(upload_to="uploads/")
     created = models.DateTimeField(auto_now_add=True)
 
